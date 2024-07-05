@@ -1,0 +1,181 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff5e1;  /* Yellowish tint */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #ffecd2;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.header-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    margin: 0;
+    color: #d9534f;
+}
+
+.header-content p {
+    font-family: 'Playfair Display', serif;
+    margin: 5px 0 0;
+    font-size: 18px;
+    color: #5d4037;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #ffe4b5;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #d9534f;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #c9302c;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+footer {
+    background-color: #ffecd2;
+    padding: 10px 0;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #5d4037;
+}
+
+/* Additional Styles for Forms and Containers */
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #d9534f;
+    outline: none;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #d9534f;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #c9302c;
+}
+
+.messages {
+    list-style: none;
+    padding: 0;
+    color: #d9534f;
+    margin-top: 10px;
+}
+
+/* FAQ and Travel Containers */
+.faq-container, .travel-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-container h2, .travel-container h2 {
+    text-align: center;
+    color: #d9534f;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.faq-item, .travel-item {
+    margin-bottom: 10px;
+}
+
+.faq-question, .travel-question {
+    background-color: #ffe4b5;
+    color: #d9534f;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 4px;
+    outline: none;
+    transition: background-color 0.3s ease;
+    font-family: 'Playfair Display', serif;
+}
+
+.faq-question:hover, .travel-question:hover {
+    background-color: #ffd700;
+}
+
+.faq-answer, .travel-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: #fff;
+    border-left: 2px solid #d9534f;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+
+.faq-answer p, .travel-answer p, .travel-answer ul, .travel-answer h4 {
+    margin: 10px 0;
+}
+
+.faq-question.active + .faq-answer, .travel-question.active + .travel-answer {
+    max-height: 200px; /* Adjust as needed for the content */
+}

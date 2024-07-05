@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ananya & Mayank's Wedding{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+<body>
+
+<nav>
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('faq') }}">FAQs</a>
+    <a href="{{ url_for('travel') }}">Travel</a>
+    <a href="{{ url_for('rsvp') }}">RSVP</a>
+</nav>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 Ananya & Mayank's Wedding. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const toggleAccordion = (selector) => {
+            const questions = document.querySelectorAll(selector);
+            questions.forEach(question => {
+                question.addEventListener('click', () => {
+                    question.classList.toggle('active');
+                    const answer = question.nextElementSibling;
+                    if (question.classList.contains('active')) {
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                    } else {
+                        answer.style.maxHeight = 0;
+                    }
+                });
+            });
+        };
+
+        toggleAccordion('.faq-question');
+        toggleAccordion('.travel-question');
+    });
+</script>

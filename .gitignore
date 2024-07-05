@@ -1,0 +1,14 @@
+# Credentials file
+credentials.json
+wedding-website-428416-7a18cdcf6988.json
+
+# Unneccessary files
+.idea/
+.DS_Store
+__pycache__/
+venv/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ananya & Mayank{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .main-image img {
+            width: 100%;
+            max-width: 1000px;  /* Adjust the size as needed */
+            display: block;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .header-content h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #d9534f;
+        }
+
+        .header-content p {
+            margin: 5px 0 0;
+            font-size: 18px;
+            color: #5d4037;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('faq') }}">FAQs</a>
+        <a href="{{ url_for('travel') }}">Travel</a>
+        <a href="{{ url_for('rsvp') }}">RSVP</a>
+    </nav>
+</header>
+<div class="main-image">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Ananya & Mayank">
+</div>
+<div class="header-content">
+    <h1>Ananya & Mayank</h1>
+    <p>November 21st - 22nd, 2024<br> {{ days_to_go }} DAYS TO GO!</p>
+</div>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+</body>
+</html>
