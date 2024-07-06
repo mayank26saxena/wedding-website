@@ -1,10 +1,10 @@
-CREDENTIALS_FILE = 'wedding-website-428416-7a18cdcf6988.json'
-SPREADSHEET_NAME = 'Wedding RSVPs'
-GUEST_LIST_SHEET_NAME = 'Guest List'
-RSVP_SHEET_NAME = 'RSVPs'
-
 import os
+import json
 
 class Config:
-    SECRET_KEY = 'your_secret_key'
-    SESSION_TYPE = 'filesystem'
+    SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
+    SESSION_TYPE = os.getenv('SESSION_TYPE', 'filesystem')
+    CREDENTIALS_FILE = 'credentials.json'
+    SPREADSHEET_NAME = os.getenv('SPREADSHEET_NAME', 'Wedding RSVPs')
+    GUEST_LIST_SHEET_NAME = os.getenv('GUEST_LIST_SHEET_NAME', 'Guest List')
+    RSVP_SHEET_NAME = os.getenv('RSVP_SHEET_NAME', 'RSVPs')

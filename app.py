@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from config import Config
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from config import CREDENTIALS_FILE, SPREADSHEET_NAME, GUEST_LIST_SHEET_NAME, RSVP_SHEET_NAME
 from datetime import datetime
 
 app = Flask(__name__)
@@ -12,12 +11,12 @@ app.config.from_object(Config)
 
 # Set up Google Sheets client
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name(app.config['CREDENTIALS_FILE'], scope)
 client = gspread.authorize(creds)
-guest_list_sheet = client.open(SPREADSHEET_NAME).worksheet(GUEST_LIST_SHEET_NAME)  # Open the sheet
 
-# Open the spreadsheet
-rsvp_sheet = client.open(SPREADSHEET_NAME).worksheet(RSVP_SHEET_NAME)
+# Open the specific sheets
+guest_list_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['GUEST_LIST_SHEET_NAME'])
+rsvp_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['RSVP_SHEET_NAME'])
 
 @app.route('/')
 def home():

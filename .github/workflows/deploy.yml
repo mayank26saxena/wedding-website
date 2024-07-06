@@ -3,7 +3,7 @@ name: Deploy to Elastic Beanstalk
 on:
   push:
     branches:
-      - main  # Change this to your branch name if different
+      - main
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'  # Specify your Python version
+          python-version: '3.9'
 
       - name: Install dependencies
         run: |
@@ -29,6 +29,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Write credentials to file
+        run: echo "${{ secrets.CREDENTIALS_FILE_CONTENT }}" > credentials.json
 
       - name: Deploy to Elastic Beanstalk
         run: |
