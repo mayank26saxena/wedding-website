@@ -12,14 +12,14 @@ app.config.from_object(Config)
 
 # Set up Google Sheets client
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-print(os.getcwd())
-print(app.config['CREDENTIALS_FILE'])
-creds = ServiceAccountCredentials.from_json_keyfile_name(app.config['CREDENTIALS_FILE'], scope)
-client = gspread.authorize(creds)
+#print(os.getcwd())
+#print(app.config['CREDENTIALS_FILE'])
+#creds = ServiceAccountCredentials.from_json_keyfile_name(app.config['CREDENTIALS_FILE'], scope)
+#client = gspread.authorize(creds)
 
 # Open the specific sheets
-guest_list_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['GUEST_LIST_SHEET_NAME'])
-rsvp_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['RSVP_SHEET_NAME'])
+#guest_list_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['GUEST_LIST_SHEET_NAME'])
+#rsvp_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['RSVP_SHEET_NAME'])
 
 @app.route('/')
 def home():
@@ -38,6 +38,15 @@ def travel():
 
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
+    print(os.getcwd())
+    print(app.config['CREDENTIALS_FILE'])
+    creds = ServiceAccountCredentials.from_json_keyfile_name(app.config['CREDENTIALS_FILE'], scope)
+    client = gspread.authorize(creds)
+
+    # Open the specific sheets
+    guest_list_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['GUEST_LIST_SHEET_NAME'])
+    rsvp_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['RSVP_SHEET_NAME'])
+
     if request.method == 'POST':
         first_name = request.form['first_name'].strip()
         last_name = request.form['last_name'].strip()
