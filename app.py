@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from config import Config
 import gspread
@@ -11,6 +12,8 @@ app.config.from_object(Config)
 
 # Set up Google Sheets client
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+print(os.getcwd())
+print(app.config['CREDENTIALS_FILE'])
 creds = ServiceAccountCredentials.from_json_keyfile_name(app.config['CREDENTIALS_FILE'], scope)
 client = gspread.authorize(creds)
 
