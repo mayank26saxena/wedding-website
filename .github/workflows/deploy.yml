@@ -32,6 +32,7 @@ jobs:
 
       - name: Write credentials to file
         run: |
+          touch /var/app/current/credentials.json
           echo "${{ secrets.CREDENTIALS_FILE_CONTENT }}" > /var/app/current/credentials.json
 
       - name: Deploy to Elastic Beanstalk
