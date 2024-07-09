@@ -32,11 +32,11 @@ jobs:
 
       - name: Write credentials to file
         run: |
-          mkdir -p /var/app/current
-          echo "${{ secrets.CREDENTIALS_FILE_CONTENT }}" > /var/app/current/credentials.json
+          sudo mkdir -p /var/app/current
+          sudo echo "${{ secrets.CREDENTIALS_FILE_CONTENT }}" > /var/app/current/credentials.json
 
       - name: List files in application directory
-        run: ls -al /var/app/current
+        run: sudo ls -al /var/app/current
 
       - name: Deploy to Elastic Beanstalk
         run: |
