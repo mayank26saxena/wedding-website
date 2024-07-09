@@ -30,13 +30,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Write credentials to file
-        run: |
-          touch /var/app/current/credentials.json
-          echo "${{ secrets.CREDENTIALS_FILE_CONTENT }}" > /var/app/current/credentials.json
-
       - name: Deploy to Elastic Beanstalk
         run: |
           eb init -p python-3.9 ${{ secrets.EB_APPLICATION_NAME }} --region ${{ secrets.AWS_REGION }}
           eb use ${{ secrets.EB_ENVIRONMENT_NAME }}
           eb deploy
+
+      - name: Write credentials to file
+        run: |
+          touch /var/app/current/credentials.json
+          echo "${{ secrets.CREDENTIALS_FILE_CONTENT }}" > /var/app/current/credentials.json
