@@ -39,3 +39,6 @@ jobs:
       - name: Write credentials to file
         run: |
           echo "${{ secrets.CREDENTIALS_FILE_CONTENT }}" > credentials.json
+
+      - name: List files in working directory
+        run: ls -al
