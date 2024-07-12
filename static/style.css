@@ -42,6 +42,7 @@ nav {
     background-color: #ffe4b5;
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
+    flex-wrap: wrap; /* Ensures the nav items wrap on small screens */
 }
 
 nav a {
@@ -222,4 +223,20 @@ label[for="attending"] {
 
 label[for="attending"] input {
     margin-right: 10px;
+}
+
+@media (max-width: 600px) {
+    nav a {
+        margin: 5px 10px; /* Adjust spacing for smaller screens */
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .container, .rsvp-container, .travel-container, .faq-container {
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    .btn {
+        width: 100%; /* Full width buttons on smaller screens */
+        padding: 15px; /* Increase padding for better touch targets */
+    }
 }
