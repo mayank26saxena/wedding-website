@@ -1,29 +1,33 @@
 {% extends "base.html" %}
+
 {% block title %}Schedule{% endblock %}
+
 {% block content %}
-<h1>Wedding Schedule</h1>
-<section>
-    <h2>Event Schedule</h2>
-    <p>Details about the wedding events go here...</p>
-
-    <h3>Mehendi Ceremony</h3>
-    <p>Date: [Insert Date]</p>
-    <p>Time: [Insert Time]</p>
-    <p>Location: [Insert Location]</p>
-
-    <h3>Sangeet Night</h3>
-    <p>Date: [Insert Date]</p>
-    <p>Time: [Insert Time]</p>
-    <p>Location: [Insert Location]</p>
-
-    <h3>Wedding Ceremony</h3>
-    <p>Date: [Insert Date]</p>
-    <p>Time: [Insert Time]</p>
-    <p>Location: [Insert Location]</p>
-
-    <h3>Reception</h3>
-    <p>Date: [Insert Date]</p>
-    <p>Time: [Insert Time]</p>
-    <p>Location: [Insert Location]</p>
-</section>
+<div class="schedule-container">
+    <h2>Wedding Schedule</h2>
+    <div class="schedule-item">
+        <h3>Mehendi Ceremony</h3>
+        <p>Date: [Insert Date]</p>
+        <p>Time: [Insert Time]</p>
+        <p>Location: [Insert Location]</p>
+    </div>
+    <div class="schedule-item">
+        <h3>Sangeet Night</h3>
+        <p>Date: [Insert Date]</p>
+        <p>Time: [Insert Time]</p>
+        <p>Location: [Insert Location]</p>
+    </div>
+    <div class="schedule-item">
+        <h3>Wedding Ceremony</h3>
+        <p>Date: [Insert Date]</p>
+        <p>Time: [Insert Time]</p>
+        <p>Location: [Insert Location]</p>
+    </div>
+    <div class="schedule-item">
+        <h3>Reception</h3>
+        <p>Date: [Insert Date]</p>
+        <p>Time: [Insert Time]</p>
+        <p>Location: [Insert Location]</p>
+    </div>
+</div>
 {% endblock %}

@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSVP Form</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}RSVP{% endblock %}
+{% block content %}
 <div class="container">
     <h2>RSVP Form</h2>
     <form method="POST" action="{{ url_for('rsvp_form') }}" class="form">
@@ -22,5 +16,4 @@
         </div>
     </form>
 </div>
-</body>
-</html>
+{% endblock %}

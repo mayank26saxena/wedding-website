@@ -74,6 +74,7 @@ footer {
     color: #5d4037;
 }
 
+
 /* Additional Styles for Forms and Containers */
 .form {
     display: flex;
@@ -128,8 +129,9 @@ footer {
     margin-top: 10px;
 }
 
-/* FAQ and Travel Containers */
-.faq-container, .travel-container {
+
+/* FAQ, Travel, Story, RSVP, and Schedule Containers */
+.faq-container, .travel-container, .story-container, .rsvp-container, .schedule-container {
     max-width: 800px;
     margin: auto;
     padding: 20px;
@@ -138,14 +140,14 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.faq-container h2, .travel-container h2 {
+.faq-container h2, .travel-container h2, .story-container h2, .rsvp-container h2, .schedule-container h2 {
     text-align: center;
     color: #d9534f;
     margin-bottom: 20px;
     font-family: 'Cinzel', serif;
 }
 
-.faq-item, .travel-item {
+.faq-item, .travel-item, .story-item, .schedule-item {
     margin-bottom: 10px;
 }
 
@@ -185,7 +187,6 @@ footer {
 .faq-question.active + .faq-answer, .travel-question.active + .travel-answer {
     max-height: 200px; /* Adjust as needed for the content */
 }
-
 
 input[type="text"], input[type="email"], input[type="submit"], label[for="attending"] {
     display: block;

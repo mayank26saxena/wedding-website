@@ -51,7 +51,6 @@ def rsvp():
 
         # Verify against Google Sheet
         guest_list = guest_list_sheet.get_all_records()
-        print(guest_list)
         guest = next((guest for guest in guest_list if guest['First Name'].strip().lower() == first_name.lower() and guest['Last Name'].strip().lower() == last_name.lower() and guest['Secret Code'] == secret_code), None)
 
         if guest:
