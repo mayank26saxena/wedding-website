@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Cinzel', serif;
     margin: 0;
     padding: 0;
     background-color: #fff5e1;  /* Yellowish tint */
@@ -10,21 +10,27 @@ body {
     min-height: 100vh;
 }
 
-header {
-    background-color: #ffecd2;
+.main-image img {
+    width: 100%;
+    max-width: 1000px;  /* Adjust the size as needed */
+    display: block;
+    margin: 0 auto;
+}
+
+.header-content {
     text-align: center;
-    padding: 20px 0;
+    margin-top: 20px;
 }
 
 .header-content h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cinzel', serif;
     font-size: 36px;
     margin: 0;
     color: #d9534f;
 }
 
 .header-content p {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cinzel', serif;
     margin: 5px 0 0;
     font-size: 18px;
     color: #5d4037;
@@ -136,7 +142,7 @@ footer {
     text-align: center;
     color: #d9534f;
     margin-bottom: 20px;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cinzel', serif;
 }
 
 .faq-item, .travel-item {
@@ -155,7 +161,7 @@ footer {
     border-radius: 4px;
     outline: none;
     transition: background-color 0.3s ease;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cinzel', serif;
 }
 
 .faq-question:hover, .travel-question:hover {
@@ -178,4 +184,41 @@ footer {
 
 .faq-question.active + .faq-answer, .travel-question.active + .travel-answer {
     max-height: 200px; /* Adjust as needed for the content */
+}
+
+
+input[type="text"], input[type="email"], input[type="submit"], label[for="attending"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input[type="text"], input[type="email"] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+label[for="attending"] {
+    display: flex;
+    align-items: center;
+}
+
+label[for="attending"] input {
+    margin-right: 10px;
 }

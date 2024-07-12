@@ -12,14 +12,12 @@ app.config.from_object(Config)
 
 # Set up Google Sheets client
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-#print(os.getcwd())
-#print(app.config['CREDENTIALS_FILE'])
-#creds = ServiceAccountCredentials.from_json_keyfile_name(app.config['CREDENTIALS_FILE'], scope)
-#client = gspread.authorize(creds)
+creds = ServiceAccountCredentials.from_json_keyfile_name(app.config['CREDENTIALS_FILE'], scope)
+client = gspread.authorize(creds)
 
 # Open the specific sheets
-#guest_list_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['GUEST_LIST_SHEET_NAME'])
-#rsvp_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['RSVP_SHEET_NAME'])
+guest_list_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['GUEST_LIST_SHEET_NAME'])
+rsvp_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['RSVP_SHEET_NAME'])
 
 @app.route('/')
 def home():
@@ -28,25 +26,24 @@ def home():
     days_to_go = (wedding_date - today).days
     return render_template('home.html', days_to_go=days_to_go)
 
-@app.route('/faq')
-def faq():
-    return render_template('faq.html')
+@app.route('/our_story')
+def our_story():
+    return render_template('our_story.html')
+
+@app.route('/schedule')
+def schedule():
+    return render_template('schedule.html')
 
 @app.route('/travel')
 def travel():
     return render_template('travel.html')
 
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
+
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
-    print(os.getcwd())
-    print(app.config['CREDENTIALS_FILE'])
-    creds = ServiceAccountCredentials.from_json_keyfile_name(app.config['CREDENTIALS_FILE'], scope)
-    client = gspread.authorize(creds)
-
-    # Open the specific sheets
-    guest_list_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['GUEST_LIST_SHEET_NAME'])
-    rsvp_sheet = client.open(app.config['SPREADSHEET_NAME']).worksheet(app.config['RSVP_SHEET_NAME'])
-
     if request.method == 'POST':
         first_name = request.form['first_name'].strip()
         last_name = request.form['last_name'].strip()

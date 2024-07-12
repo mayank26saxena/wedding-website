@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Ananya & Mayank's Wedding{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     </head>
 <body>
 
 <nav>
     <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('our_story') }}">Our Story</a>
+    <a href="{{ url_for('schedule') }}">Schedule</a>
     <a href="{{ url_for('faq') }}">FAQs</a>
     <a href="{{ url_for('travel') }}">Travel</a>
     <a href="{{ url_for('rsvp') }}">RSVP</a>
