@@ -36,19 +36,50 @@ body {
     color: #5d4037;
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    background-color: #ffe4b5;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    flex-wrap: wrap; /* Ensures the nav items wrap on small screens */
+header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    background-color: #ffe4b5;
+    width: 100%;
 }
 
-nav a {
+nav {
+    display: flex;
+    justify-content: space-between;  /* Space between logo and nav items */
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Logo styles */
+.logo {
+    margin-right: auto;  /* Pushes the logo to the left */
+    padding-left: 20px;  /* Default padding */
+}
+
+.logo a {
+    text-decoration: none;
+    color: #d9534f;
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 1px;  /* Adds padding to the left */
+}
+
+/* Navigation links container */
+.nav-links {
+    display: flex;
+    justify-content: center;  /* Centers the nav links */
+    flex: 1;
+}
+
+.nav-links a {
     margin: 0 15px;
     text-decoration: none;
     color: #d9534f;
@@ -56,14 +87,71 @@ nav a {
     font-size: 16px;
 }
 
-nav a:hover {
+.nav-links a:hover {
     color: #c9302c;
 }
 
+/* Hamburger menu styles for mobile */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background: #d9534f;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #ffe4b5;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    nav {
+        justify-content: space-between;  /* Ensures the logo stays on the left */
+    }
+
+    @media (max-width: 600px) {
+        .logo {
+            padding-left: 10px;  /* Less padding on smaller screens */
+        }
+    }
+
+    @media (min-width: 769px) {
+        .logo {
+            padding-left: 30px;  /* More padding on larger screens */
+        }
+}
+
+/* Main Content */
 main {
     flex: 1;
     padding: 20px;
-    padding-top: 10px; /* Ensure content is not hidden behind sticky navbar */
+    padding-top: 10px; /* Add padding to create space between the navbar and the content */
 }
 
 footer {
@@ -143,7 +231,6 @@ footer {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    opacity: 0.9; /* Adjust opacity for all containers */
 }
 
 .faq-container h2, .travel-container h2, .story-container h2, .rsvp-container h2, .schedule-container h2 {
@@ -215,6 +302,10 @@ input[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
 }
 
 input[type="submit"]:hover {
