@@ -3,64 +3,192 @@
 {% block title %}Ananya & Mayank | Travel{% endblock %}
 
 {% block content %}
-<div class="travel-container">
-    <h2>Travel Information</h2>
-    <div class="travel-item">
-        <button class="travel-question">Event Date and Venue</button>
-        <div class="travel-answer">
-            <p>The wedding will take place on November 21st, 2024 at [Venue Name], Jaipur.</p>
-        </div>
+<style>
+    .travel-page-container {
+        display: flex;
+        width: 100%;
+        height: 100vh; /* Ensure the container takes up the full viewport height */
+        overflow: hidden;
+        align-items: stretch; /* Make sure child items stretch to the same height */
+    }
+    .slideshow-container {
+        flex: 1;
+        position: relative;
+        max-width: 50%;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-start; /* Align items to the top */
+    }
+    .slideshow-container img {
+        width: 100%;
+        height: 100%; /* Ensure the image covers the full height of the container */
+        object-fit: cover; /* Cover the container while maintaining aspect ratio */
+        transition: opacity 2s ease-in-out; /* Slower fade transition */
+    }
+    .slide {
+        display: none;
+        opacity: 0; /* Start slides as invisible */
+    }
+    .active-slide {
+        display: block;
+        opacity: 1; /* Fade in active slide */
+    }
+    .travel-content {
+        flex: 1;
+        max-width: 50%;
+        height: 100%; /* Ensure the container takes up the full height of the parent */
+        padding: 20px; /* Adjusted padding */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Ensure content starts at the top */
+        background-color: rgba(255, 255, 255, 0.2); /* White with 20% opacity */
+        backdrop-filter: blur(10px); /* Optional: adds a blur effect behind the text */
+        color: #333; /* Text color */
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+    .travel-content h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        width: 100%; /* Ensure the heading covers the full width */
+        color: #d9534f; /* Updated color */
+        font-family: 'Your-Font-Family'; /* Replace with your actual font-family */
+        text-transform: uppercase; /* Example text transformation */
+        text-align: left; /* Left align the heading */
+        margin: 0; /* Remove default margin */
+        padding: 20px 0; /* Add padding to the heading */
+    }
+    .travel-item {
+        margin-bottom: 20px;
+        width: 100%; /* Ensure each travel item covers the full width */
+    }
+    .travel-question {
+        background-color: rgba(247, 247, 247, 0.8); /* Light background with transparency */
+        border: 1px solid #ddd;
+        cursor: pointer;
+        padding: 10px;
+        width: 100%; /* Ensure the question box covers the full width */
+        text-align: left;
+        font-size: 16px;
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+    }
+    .travel-answer {
+        display: none;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-top: none;
+        background-color: rgba(255, 255, 255, 0.8); /* Background color for answer section */
+        width: 100%; /* Ensure the answer box covers the full width */
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+    }
+    .travel-answer.active {
+        display: block;
+    }
+    @media (max-width: 767px) {
+        .travel-page-container {
+            flex-direction: column;
+        }
+        .slideshow-container, .travel-content {
+            max-width: 100%;
+            height: auto; /* Adjust height for mobile view */
+        }
+    }
+</style>
+
+<div class="travel-page-container">
+    <div class="slideshow-container">
+        <img class="slide active-slide" src="static/images/travel/travel-1.jpg" alt="Jaipur Image 1">
+        <img class="slide" src="static/images/travel/travel-2.jpg" alt="Jaipur Image 2">
+        <img class="slide" src="static/images/travel/travel-3.jpg" alt="Jaipur Image 3">
+        <img class="slide" src="static/images/travel/travel-4.jpg" alt="Jaipur Image 4">
     </div>
-    <div class="travel-item">
-        <button class="travel-question">Getting to Jaipur</button>
-        <div class="travel-answer">
-            <h4>By Air</h4>
-            <p>The nearest airport is Jaipur International Airport (JAI), which is about 12 km from the city center. Regular flights are available from major cities across India and international destinations.</p>
-            <h4>By Train</h4>
-            <p>Jaipur Junction is the main railway station in Jaipur, with trains connecting to various parts of India. The station is located in the heart of the city.</p>
-            <h4>By Road</h4>
-            <p>Jaipur is well connected by road. You can take a bus or hire a cab from nearby cities. The city is connected by NH8, NH11, and NH12 highways.</p>
+    <div class="travel-content">
+        <h2 class="page-heading">Travel Information</h2>
+        <div class="travel-item">
+            <button class="travel-question">Event Date and Venue</button>
+            <div class="travel-answer">
+                <p>The wedding will take place on November 21st, 2024 at [Venue Name], Jaipur.</p>
+            </div>
         </div>
-    </div>
-    <div class="travel-item">
-        <button class="travel-question">Accommodation</button>
-        <div class="travel-answer">
-            <p>We have reserved rooms at the following hotels for your convenience:</p>
-            <ul>
-                <li><strong>[Hotel Name 1]</strong>: Address, Contact Information, Booking Link</li>
-                <li><strong>[Hotel Name 2]</strong>: Address, Contact Information, Booking Link</li>
-                <li><strong>[Hotel Name 3]</strong>: Address, Contact Information, Booking Link</li>
-            </ul>
+        <div class="travel-item">
+            <button class="travel-question">Getting to Jaipur</button>
+            <div class="travel-answer">
+                <h4>By Air</h4>
+                <p>The nearest airport is Jaipur International Airport (JAI), which is about 12 km from the city center. Regular flights are available from major cities across India and international destinations.</p>
+                <h4>By Train</h4>
+                <p>Jaipur Junction is the main railway station in Jaipur, with trains connecting to various parts of India. The station is located in the heart of the city.</p>
+                <h4>By Road</h4>
+                <p>Jaipur is well connected by road. You can take a bus or hire a cab from nearby cities. The city is connected by NH8, NH11, and NH12 highways.</p>
+            </div>
         </div>
-    </div>
-    <div class="travel-item">
-        <button class="travel-question">Local Transportation</button>
-        <div class="travel-answer">
-            <p>For getting around Jaipur, you can use:</p>
-            <ul>
-                <li>Auto-rickshaws and taxis</li>
-                <li>App-based cab services like Ola and Uber</li>
-                <li>Public buses</li>
-            </ul>
+        <div class="travel-item">
+            <button class="travel-question">Accommodation</button>
+            <div class="travel-answer">
+                <p>We have reserved rooms at the following hotels for your convenience:</p>
+                <ul>
+                    <li><strong>[Hotel Name 1]</strong>: Address, Contact Information, Booking Link</li>
+                    <li><strong>[Hotel Name 2]</strong>: Address, Contact Information, Booking Link</li>
+                    <li><strong>[Hotel Name 3]</strong>: Address, Contact Information, Booking Link</li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="travel-item">
-        <button class="travel-question">Things to Do in Jaipur</button>
-        <div class="travel-answer">
-            <p>While you are here, you might want to explore some of the local attractions:</p>
-            <ul>
-                <li><strong>Amber Fort</strong></li>
-                <li><strong>Hawa Mahal</strong></li>
-                <li><strong>City Palace</strong></li>
-                <li><strong>Jantar Mantar</strong></li>
-            </ul>
+        <div class="travel-item">
+            <button class="travel-question">Local Transportation</button>
+            <div class="travel-answer">
+                <p>For getting around Jaipur, you can use:</p>
+                <ul>
+                    <li>Auto-rickshaws and taxis</li>
+                    <li>App-based cab services like Ola and Uber</li>
+                    <li>Public buses</li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="travel-item">
-        <button class="travel-question">Contact Us</button>
-        <div class="travel-answer">
-            <p>If you have any questions or need further assistance, please do not hesitate to contact us at [Your Contact Information].</p>
+        <div class="travel-item">
+            <button class="travel-question">Things to Do in Jaipur</button>
+            <div class="travel-answer">
+                <p>While you are here, you might want to explore some of the local attractions:</p>
+                <ul>
+                    <li><strong>Amber Fort</strong></li>
+                    <li><strong>Hawa Mahal</strong></li>
+                    <li><strong>City Palace</strong></li>
+                    <li><strong>Jantar Mantar</strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="travel-item">
+            <button class="travel-question">Contact Us</button>
+            <div class="travel-answer">
+                <p>If you have any questions or need further assistance, please do not hesitate to contact us at [Your Contact Information].</p>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    // JavaScript for the slideshow
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName('slide');
+    const totalSlides = slides.length;
+
+    function showSlides() {
+        for (let i = 0; i < totalSlides; i++) {
+            slides[i].classList.remove('active-slide');
+        }
+        slideIndex++;
+        if (slideIndex > totalSlides) {
+            slideIndex = 1;
+        }
+        slides[slideIndex - 1].classList.add('active-slide');
+        setTimeout(showSlides, 5000); // Change image every 5 seconds
+    }
+    showSlides();
+
+    // JavaScript for the FAQ toggle
+    const questions = document.getElementsByClassName('travel-question');
+    for (let i = 0; i < questions.length; i++) {
+        questions[i].addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            answer.classList.toggle('active');
+        });
+    }
+</script>
 {% endblock %}
