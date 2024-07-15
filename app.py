@@ -71,11 +71,25 @@ def rsvp_form():
 
     if request.method == 'POST':
         attendance = request.form['attendance']
-        people = request.form['people']
-        dietary_restrictions = request.form.get('dietary_restrictions', '')
-        hashtag_suggestions = request.form.get('hashtag_suggestions', '')
         first_name = session['first_name']
         last_name = session['last_name']
+
+        if attendance == 'yes':
+            people = request.form['people']
+            arrival_day = request.form['arrival_day']
+            direct_arrival = request.form['direct_arrival']
+            need_transportation = request.form.get('need_transportation', '')
+            dietary_restrictions = request.form.get('dietary_restrictions', '')
+            hashtag_suggestions = request.form.get('hashtag_suggestions', '')
+            contact_info = request.form['contact_info']
+        else:
+            people = ''
+            arrival_day = ''
+            direct_arrival = ''
+            need_transportation = ''
+            dietary_restrictions = ''
+            hashtag_suggestions = ''
+            contact_info = ''
 
         # Get the current time in UTC
         utc_time = datetime.now(pytz.utc).strftime('%Y-%m-%d %H:%M:%S')
@@ -89,15 +103,19 @@ def rsvp_form():
                 # Update the existing record
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Attendance') + 1, attendance)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('People') + 1, people)
+                rsvp_sheet.update_cell(i, list(record.keys()).index('Arrival Day') + 1, arrival_day)
+                rsvp_sheet.update_cell(i, list(record.keys()).index('Direct Arrival') + 1, direct_arrival)
+                rsvp_sheet.update_cell(i, list(record.keys()).index('Need Transportation') + 1, need_transportation)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Dietary Restrictions') + 1, dietary_restrictions)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Hashtag Suggestions') + 1, hashtag_suggestions)
+                rsvp_sheet.update_cell(i, list(record.keys()).index('Contact Info') + 1, contact_info)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Last Updated') + 1, utc_time)
                 updated = True
                 break
 
         if not updated:
             # Append a new record if no existing record is found
-            rsvp_sheet.append_row([first_name, last_name, attendance, people, dietary_restrictions, hashtag_suggestions, timestamp])
+            rsvp_sheet.append_row([first_name, last_name, attendance, people, arrival_day, direct_arrival, need_transportation, dietary_restrictions, hashtag_suggestions, contact_info, utc_time])
 
         return redirect(url_for('thank_you'))
 

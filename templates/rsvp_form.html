@@ -2,28 +2,50 @@
 {% block title %}Ananya & Mayank | RSVP{% endblock %}
 {% block content %}
 <style>
-    .small-input {
+    .form-control {
         width: 100%;
-        max-width: 300px;
+        max-width: 500px; /* Set a max-width for larger screens */
         box-sizing: border-box; /* Ensure padding doesn't affect total width */
+        background-color: white;
+        color: black;
+        padding: 10px;
+        margin-bottom: 20px; /* Add spacing between form elements */
+        border: 1px solid #ccc;
+        border-radius: 5px;
     }
     @media (min-width: 576px) {
-        .small-input {
-            width: 50%;
+        .form-control {
+            width: 100%; /* Full width for larger screens */
         }
     }
-    @media (min-width: 768px) {
-        .small-input {
-            width: 33%;
-        }
+    .schedule-container {
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        border-radius: 10px;
     }
-    .form-control {
-        background-color: white;
-        color: black;
+    .form-group {
+        margin-bottom: 20px;
     }
-    .form-control option {
-        background-color: white;
-        color: black;
+    .form-group label {
+        font-family: 'Cinzel', serif;
+        font-size: 1.2em;
+        color: #d9534f;
+        display: block; /* Ensure label is on a new line */
+        margin-bottom: 10px;
+    }
+    .btn {
+        background-color: #d9534f;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+        font-family: 'Cinzel', serif;
+    }
+    .btn:hover {
+        background-color: #c9302c;
     }
 </style>
 <div class="schedule-container">
@@ -31,33 +53,80 @@
     <form method="POST" action="{{ url_for('rsvp_form') }}" class="form">
         <div class="form-group">
             <label for="attendance">Will you attend?</label>
-            <select id="attendance" name="attendance" required class="form-control small-input">
+            <select id="attendance" name="attendance" required class="form-control">
+                <option value="" disabled selected>Select an option</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div class="form-group">
-            <label for="people">How many people will you be attending with?</label>
-            <select id="people" name="people" required class="form-control small-input">
-                <option value="Just me">Just me</option>
-                <option value="With 1 more person">With 1 more person</option>
-                <option value="With 2 more people">With 2 more people</option>
-                <option value="With 3 more people">With 3 more people</option>
-                <option value="With 4 more people">With 4 more people</option>
-                <option value="With 5 more people">With 5 more people</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="dietary_restrictions">Do you have any dietary restrictions?</label>
-            <input type="text" id="dietary_restrictions" name="dietary_restrictions" class="form-control small-input">
-        </div>
-        <div class="form-group">
-            <label for="hashtag_suggestions">Can you provide suggestions for our hashtag?</label>
-            <input type="text" id="hashtag_suggestions" name="hashtag_suggestions" class="form-control small-input">
+        <div id="additional-questions" style="display: none;">
+            <div class="form-group">
+                <label for="people">How many people will you be attending with?</label>
+                <select id="people" name="people" class="form-control">
+                    <option value="Just me">Just me</option>
+                    <option value="With 1 more person">With 1 more person</option>
+                    <option value="With 2 more people">With 2 more people</option>
+                    <option value="With 3 more people">With 3 more people</option>
+                    <option value="With 4 more people">With 4 more people</option>
+                    <option value="With 5 more people">With 5 more people</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="arrival_day">Which day will you be arriving?</label>
+                <input type="date" id="arrival_day" name="arrival_day" class="form-control" min="2024-11-21" max="2024-11-22">
+            </div>
+            <div class="form-group">
+                <label for="direct_arrival">Will you be arriving directly at the venue?</label>
+                <select id="direct_arrival" name="direct_arrival" class="form-control">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group" id="transportation_group" style="display: none;">
+                <label for="need_transportation">Will you need transportation from the airport?</label>
+                <select id="need_transportation" name="need_transportation" class="form-control">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dietary_restrictions">Do you have any dietary restrictions?</label>
+                <input type="text" id="dietary_restrictions" name="dietary_restrictions" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="hashtag_suggestions">We're looking for suggestions for our hashtag!!! Any suggestions?</label>
+                <input type="text" id="hashtag_suggestions" name="hashtag_suggestions" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="contact_info">What would be the best way to contact you? Please enter the country code as well.</label>
+                <input type="text" id="contact_info" name="contact_info" class="form-control">
+            </div>
         </div>
         <div class="form-group">
             <button type="submit" class="btn">Submit</button>
         </div>
     </form>
 </div>
+
+<script>
+    document.getElementById('attendance').addEventListener('change', function () {
+        var additionalQuestions = document.getElementById('additional-questions');
+        if (this.value === 'yes') {
+            additionalQuestions.style.display = 'block';
+        } else {
+            additionalQuestions.style.display = 'none';
+        }
+    });
+
+    document.getElementById('direct_arrival').addEventListener('change', function () {
+        var transportationGroup = document.getElementById('transportation_group');
+        if (this.value === 'no') {
+            transportationGroup.style.display = 'block';
+        } else {
+            transportationGroup.style.display = 'none';
+        }
+    });
+</script>
 {% endblock %}
