@@ -43,6 +43,9 @@ nav {
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
     flex-wrap: wrap; /* Ensures the nav items wrap on small screens */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav a {
@@ -60,6 +63,7 @@ nav a:hover {
 main {
     flex: 1;
     padding: 20px;
+    padding-top: 10px; /* Ensure content is not hidden behind sticky navbar */
 }
 
 footer {
@@ -139,6 +143,7 @@ footer {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0.9; /* Adjust opacity for all containers */
 }
 
 .faq-container h2, .travel-container h2, .story-container h2, .rsvp-container h2, .schedule-container h2 {
@@ -238,5 +243,14 @@ label[for="attending"] input {
     .btn {
         width: 100%; /* Full width buttons on smaller screens */
         padding: 15px; /* Increase padding for better touch targets */
+    }
+
+    nav {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-content {
+        margin-top: 80px; /* Ensure content is not hidden behind sticky navbar */
     }
 }
