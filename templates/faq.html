@@ -3,67 +3,175 @@
 {% block title %}Ananya & Mayank | FAQs{% endblock %}
 
 {% block content %}
-<div class="faq-container">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-        <button class="faq-question">What is the date and location of the wedding?</button>
-        <div class="faq-answer">
-            <p>The wedding will take place on November 21st, 2024 in Jaipur, India.</p>
-        </div>
+<style>
+    .faq-page-container {
+        display: flex;
+        flex-direction: column; /* Change to column on mobile */
+        width: 100%;
+        height: 100vh; /* Ensure the container takes up the full viewport height */
+        overflow-y: auto; /* Enable vertical scrolling for the entire container */
+        align-items: stretch; /* Make sure child items stretch to the same height */
+    }
+    @media (min-width: 768px) {
+        .faq-page-container {
+            flex-direction: row; /* Change to row on larger screens */
+        }
+    }
+    .image-container {
+        flex: 1;
+        position: relative;
+        max-width: 100%;
+        height: 50vh; /* Ensure the image container takes up half the height on mobile */
+        overflow: hidden;
+        display: flex;
+        align-items: flex-start; /* Align items to the top */
+    }
+    @media (min-width: 768px) {
+        .image-container {
+            max-width: 50%;
+            height: 100%; /* Ensure the image container takes up the full height on larger screens */
+        }
+    }
+    .image-container img {
+        width: 100%;
+        height: 100%; /* Ensure the image covers the full height of the container */
+        object-fit: cover; /* Cover the container while maintaining aspect ratio */
+    }
+    .faq-content {
+        flex: 1;
+        max-width: 100%;
+        height: auto; /* Adjust height for mobile view */
+        padding: 20px; /* Adjusted padding */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Ensure content starts at the top */
+        background-color: rgba(255, 255, 255, 0.2); /* White with 20% opacity */
+        backdrop-filter: blur(10px); /* Optional: adds a blur effect behind the text */
+        color: #333; /* Text color */
+    }
+    @media (min-width: 768px) {
+        .faq-content {
+            max-width: 50%;
+            height: 100%; /* Ensure the content takes up the full height on larger screens */
+            overflow-y: auto; /* Enable vertical scrolling for the content on larger screens */
+        }
+    }
+    .faq-content h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        width: 100%; /* Ensure the heading covers the full width */
+        color: #d9534f; /* Updated color */
+        font-family: 'Cinzel', serif; /* Updated font-family */
+        text-transform: uppercase; /* Example text transformation */
+        text-align: left; /* Left align the heading */
+        margin: 0; /* Remove default margin */
+        padding: 20px 0; /* Add padding to the heading */
+    }
+    .faq-item {
+        margin-bottom: 20px;
+        width: 100%; /* Ensure each faq item covers the full width */
+    }
+    .faq-question {
+        background-color: rgba(247, 247, 247, 0.8); /* Light background with transparency */
+        border: 1px solid #ddd;
+        cursor: pointer;
+        padding: 10px;
+        width: 100%; /* Ensure the question box covers the full width */
+        text-align: left;
+        font-size: 16px;
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+    }
+    .faq-answer {
+        display: none;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-top: none;
+        background-color: rgba(255, 255, 255, 0.8); /* Background color for answer section */
+        width: 100%; /* Ensure the answer box covers the full width */
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+    }
+    .faq-answer.active {
+        display: block;
+    }
+</style>
+
+<div class="faq-page-container">
+    <div class="image-container">
+        <img src="static/images/faq/thinking.jpg" alt="FAQ Image">
     </div>
-    <div class="faq-item">
-        <button class="faq-question">What time should I arrive?</button>
-        <div class="faq-answer">
-            <p>Please arrive by 4:00 PM for the ceremony. The reception will follow immediately after.</p>
+    <div class="faq-content">
+        <h2 class="page-heading">Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <button class="faq-question">What is the date and location of the wedding?</button>
+            <div class="faq-answer">
+                <p>The wedding will take place on November 21st, 2024 in Jaipur, India.</p>
+            </div>
         </div>
-    </div>
-    <div class="faq-item">
-        <button class="faq-question">What is the dress code?</button>
-        <div class="faq-answer">
-            <p>The dress code is formal. Please wear traditional Indian attire or formal Western wear.</p>
+        <div class="faq-item">
+            <button class="faq-question">What time should I arrive?</button>
+            <div class="faq-answer">
+                <p>Please arrive by 4:00 PM for the ceremony. The reception will follow immediately after.</p>
+            </div>
         </div>
-    </div>
-    <div class="faq-item">
-        <button class="faq-question">Is there parking available at the venue?</button>
-        <div class="faq-answer">
-            <p>Yes, there is ample parking available at the venue.</p>
+        <div class="faq-item">
+            <button class="faq-question">What is the dress code?</button>
+            <div class="faq-answer">
+                <p>The dress code is formal. Please wear traditional Indian attire or formal Western wear.</p>
+            </div>
         </div>
-    </div>
-    <div class="faq-item">
-        <button class="faq-question">Are children welcome?</button>
-        <div class="faq-answer">
-            <p>Yes, children are welcome to attend the wedding.</p>
+        <div class="faq-item">
+            <button class="faq-question">Is there parking available at the venue?</button>
+            <div class="faq-answer">
+                <p>Yes, there is ample parking available at the venue.</p>
+            </div>
         </div>
-    </div>
-    <div class="faq-item">
-        <button class="faq-question">What should I do if I have dietary restrictions?</button>
-        <div class="faq-answer">
-            <p>Please let us know your dietary restrictions when you RSVP, and we will accommodate your needs.</p>
+        <div class="faq-item">
+            <button class="faq-question">Are children welcome?</button>
+            <div class="faq-answer">
+                <p>Yes, children are welcome to attend the wedding.</p>
+            </div>
         </div>
-    </div>
-    <div class="faq-item">
-        <button class="faq-question">Can I bring a plus one?</button>
-        <div class="faq-answer">
-            <p>We have limited space at the venue, so we request that only guests named on the invitation attend.</p>
+        <div class="faq-item">
+            <button class="faq-question">What should I do if I have dietary restrictions?</button>
+            <div class="faq-answer">
+                <p>Please let us know your dietary restrictions when you RSVP, and we will accommodate your needs.</p>
+            </div>
         </div>
-    </div>
-    <div class="faq-item">
-        <button class="faq-question">Will transportation be provided?</button>
-        <div class="faq-answer">
-            <p>We will provide shuttle services from select hotels to the venue. Please check the travel page for more details.</p>
+        <div class="faq-item">
+            <button class="faq-question">Can I bring a plus one?</button>
+            <div class="faq-answer">
+                <p>We have limited space at the venue, so we request that only guests named on the invitation attend.</p>
+            </div>
         </div>
-    </div>
-    <div class="faq-item">
-        <button class="faq-question">How do I RSVP?</button>
-        <div class="faq-answer">
-            <p>You can RSVP on our website by visiting the RSVP page.</p>
+        <div class="faq-item">
+            <button class="faq-question">Will transportation be provided?</button>
+            <div class="faq-answer">
+                <p>We will provide shuttle services from select hotels to the venue. Please check the travel page for more details.</p>
+            </div>
         </div>
-    </div>
-    <div class="faq-item">
-        <button class="faq-question">Who can I contact if I have additional questions?</button>
-        <div class="faq-answer">
-            <p>If you have any other questions, please contact us at [Your Contact Information].</p>
+        <div class="faq-item">
+            <button class="faq-question">How do I RSVP?</button>
+            <div class="faq-answer">
+                <p>You can RSVP on our website by visiting the RSVP page.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">Who can I contact if I have additional questions?</button>
+            <div class="faq-answer">
+                <p>If you have any other questions, please contact us at [Your Contact Information].</p>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    // JavaScript for the FAQ toggle
+    const questions = document.getElementsByClassName('faq-question');
+    for (let i = 0; i < questions.length; i++) {
+        questions[i].addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            answer.classList.toggle('active');
+        });
+    }
+</script>
 {% endblock %}
