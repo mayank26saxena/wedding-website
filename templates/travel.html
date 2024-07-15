@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block title %}Ananya & Mayank | Travel{% endblock %}
 
 {% block content %}
@@ -116,58 +115,72 @@
         <div class="travel-item">
             <button class="travel-question">Event Date and Venue</button>
             <div class="travel-answer">
-                <p>The wedding will take place on November 21st, 2024 at [Venue Name], Jaipur.</p>
+                <p>
+                    <strong>Dates:</strong><br>
+                    Our wedding celebrations will take place from November 21-22. Please see <a href="{{ url_for('schedule') }}">schedule page</a> for event details.
+                </p>
+                <p>
+                    <strong>Venue:</strong> Samode Bagh<br>
+                    <a href="https://maps.app.goo.gl/cm8zA36F4qtrJtG8A">
+                        Village Fatehpura Bansa, Chomu, Rajasthan 303806, India
+                    </a>
+                </p>
             </div>
         </div>
         <div class="travel-item">
             <button class="travel-question">Getting to Jaipur</button>
             <div class="travel-answer">
+                <p>Jaipur is easily accessible - by air, by train, or by road. Or if you’re really adventurous, even by a camel.</p>
                 <h4>By Air</h4>
-                <p>The nearest airport is Jaipur International Airport (JAI), which is about 12 km from the city center. Regular flights are available from major cities across India and international destinations.</p>
+                <p>Jaipur International Airport is located ~1 hr away from Samode Bagh and has access to all major flights to different cities.</p>
                 <h4>By Train</h4>
-                <p>Jaipur Junction is the main railway station in Jaipur, with trains connecting to various parts of India. The station is located in the heart of the city.</p>
+                <p>Jaipur Railway Station offers direct trains to all major cities of the country. If wondering how to reach Jaipur from Delhi by train, trains such as Shatabdi, Rajdhani, and Duronto are good options.</p>
                 <h4>By Road</h4>
-                <p>Jaipur is well connected by road. You can take a bus or hire a cab from nearby cities. The city is connected by NH8, NH11, and NH12 highways.</p>
+                <p>Jaipur is connected to all major cities via roads. You can take a bus or hire a cab from nearby cities. If you’re coming from Delhi, it will take you ~5 hours (or more if traffic). The road is scenic and the views are gorgeous.</p>
             </div>
         </div>
         <div class="travel-item">
             <button class="travel-question">Accommodation</button>
             <div class="travel-answer">
-                <p>We have reserved rooms at the following hotels for your convenience:</p>
+                <p>We have reserved rooms at <a href="https://samode.com/samode-bagh/">Samode Bagh </a>for Nov 21-22.</p>
+                <p>However, if you wish to explore Jaipur after that, we suggest living close to the city center. The city has many great hotels and accommodation options (for a range of rates). Some suggestions below:</p>
                 <ul>
-                    <li><strong>[Hotel Name 1]</strong>: Address, Contact Information, Booking Link</li>
-                    <li><strong>[Hotel Name 2]</strong>: Address, Contact Information, Booking Link</li>
-                    <li><strong>[Hotel Name 3]</strong>: Address, Contact Information, Booking Link</li>
+                    <li><a href="https://www.theleela.com/the-leela-palace-jaipur">Leela Palace</a></li>
+                    <li><a href="https://www.tridenthotels.com/hotels-in-jaipur/?utm_source=GMBlisting&utm_medium=organic">Trident</a></li>
+                    <li><a href="https://www.tajhotels.com/en-in/hotels/jai-mahal-palace-jaipur?utm_source=Google&utm_medium=Local&utm_campaign=Jai-Mahal-Palace-Jaipur">Jai Mahal Palace</a></li>
+                    <li><a href="https://www.hyatt.com/hyatt-regency/en-US/jairj-hyatt-regency-jaipur-mansarovar">Hyatt Regency Jaipur Mansarovar</a></li>
                 </ul>
+                <p>Feel free to reach out to us and we can help you with recommendations.</p>
             </div>
         </div>
         <div class="travel-item">
             <button class="travel-question">Local Transportation</button>
             <div class="travel-answer">
-                <p>For getting around Jaipur, you can use:</p>
-                <ul>
-                    <li>Auto-rickshaws and taxis</li>
-                    <li>App-based cab services like Ola and Uber</li>
-                    <li>Public buses</li>
-                </ul>
+                <p>For getting to Jaipur from Samode Bagh, we would recommend booking a cab from the hotel reception desk.</p>
+                <p>For getting around in Jaipur, you can use auto-rickshaws or cabs (Uber and Ola).</p>
+                <p>Some places (e.g., markets) are best accessed by auto-rickshaws. Feel free to ask us or your hotel staff for local recommendations.</p>
             </div>
         </div>
         <div class="travel-item">
-            <button class="travel-question">Things to Do in Jaipur</button>
+            <button class="travel-question">Things To Do In Jaipur</button>
             <div class="travel-answer">
-                <p>While you are here, you might want to explore some of the local attractions:</p>
+                <p>Jaipur has something for everyone! There is a lot to do and see. DM us & we can share more but here’s something to get you started:</p>
+                <h4>What To See?</h4>
                 <ul>
-                    <li><strong>Amber Fort</strong></li>
-                    <li><strong>Hawa Mahal</strong></li>
-                    <li><strong>City Palace</strong></li>
-                    <li><strong>Jantar Mantar</strong></li>
+                    <li>Hawa Mahal</li>
+                    <li>Amer Fort</li>
+                    <li>City Palace</li>
+                    <li>Jal Mahal</li>
+                    <li>Nahargarh Fort</li>
                 </ul>
-            </div>
-        </div>
-        <div class="travel-item">
-            <button class="travel-question">Contact Us</button>
-            <div class="travel-answer">
-                <p>If you have any questions or need further assistance, please do not hesitate to contact us at [Your Contact Information].</p>
+                <h4>Where To Shop?</h4>
+                <p>Jaipur is a shopper’s paradise, offering everything from a gorgeous variety of textiles to fine jewelry.</p>
+                <ul>
+                    <li>If you’re up for an adventure to shop in the local markets and can brave the crowds, head to Johari Bazaar, Bapu Bazaar, Nehru Bazaar.</li>
+                    <li>Textiles: Apart from local shops (that we’d highly recommend trying first), you can head to stores like Anokhi, Cottons, Kilol, and Idli (hand-block textiles with a modern twist).</li>
+                    <li>Jewelry: Johari Bazaar has many small stores that offer gorgeous jewelry made of gold, silver, and precious gemstones. Remember to always bargain. Or if you prefer, you can visit more established stores like Amrapali Jewels.</li>
+                </ul>
+                <p>This guide can be helpful for shopping: <a href="https://www.travelandleisureasia.com/in/destinations/india/guide-to-shopping-in-jaipur/">Guide to Shopping in Jaipur</a> or hit us up for recommendations!</p>
             </div>
         </div>
     </div>
