@@ -28,14 +28,14 @@
     }
     @media (min-width: 768px) {
         .image-container {
-            max-width: 50%;
+            max-width: 33%;
             height: 100%; /* Ensure the image container takes up the full height on larger screens */
         }
     }
     .image-container img {
         width: 100%;
-        height: 100%; /* Ensure the image covers the full height of the container */
-        object-fit: cover; /* Cover the container while maintaining aspect ratio */
+        height: auto; /* Ensure the image maintains its aspect ratio */
+        object-fit: contain; /* Ensure the image fits the container without cropping */
     }
     .faq-content {
         flex: 1;
@@ -51,7 +51,7 @@
     }
     @media (min-width: 768px) {
         .faq-content {
-            max-width: 50%;
+            max-width: 67%;
             height: 100%; /* Ensure the content takes up the full height on larger screens */
             overflow-y: auto; /* Enable vertical scrolling for the content on larger screens */
         }
@@ -97,7 +97,7 @@
 
 <div class="faq-page-container">
     <div class="image-container">
-        <img src="static/images/faq/thinking.jpg" alt="FAQ Image">
+        <img src="static/images/faq/thinking-2.jpg" alt="FAQ Image">
     </div>
     <div class="faq-content">
         <h2 class="page-heading">Frequently Asked Questions</h2>
