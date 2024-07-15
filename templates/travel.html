@@ -7,23 +7,25 @@
         display: flex;
         flex-direction: column; /* Change to column on mobile */
         width: 100%;
-        height: 100vh; /* Ensure the container takes up the full viewport height */
+        height: auto; /* Allow the container to adjust height based on content */
         overflow-y: auto; /* Enable vertical scrolling for the entire container */
         align-items: stretch; /* Make sure child items stretch to the same height */
     }
     @media (min-width: 768px) {
         .travel-page-container {
             flex-direction: row; /* Change to row on larger screens */
+            height: 100vh; /* Ensure the container takes up the full viewport height on larger screens */
         }
     }
     .slideshow-container {
         flex: 1;
         position: relative;
         max-width: 100%;
-        height: 50vh; /* Ensure the image container takes up half the height on mobile */
+        height: auto; /* Ensure the image container takes up the appropriate height on mobile */
         overflow: hidden;
         display: flex;
-        align-items: flex-start; /* Align items to the top */
+        align-items: center; /* Align items to the center */
+        justify-content: center; /* Center the image */
     }
     @media (min-width: 768px) {
         .slideshow-container {
@@ -34,7 +36,7 @@
     .slideshow-container img {
         width: 100%;
         height: 100%; /* Ensure the image covers the full height of the container */
-        object-fit: cover; /* Cover the container while maintaining aspect ratio */
+        object-fit: cover; /* Ensure the image covers the container without distortion */
         transition: opacity 2s ease-in-out; /* Slower fade transition */
     }
     .slide {
