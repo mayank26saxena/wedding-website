@@ -1,33 +1,106 @@
 {% extends "base.html" %}
 {% block title %}Ananya & Mayank | RSVP{% endblock %}
+
 {% block content %}
-<div class="schedule-container">
-    <h2>RSVP Authentication</h2>
-    <form method="POST" action="{{ url_for('rsvp') }}" class="form">
-        <div class="form-group">
-            <label for="first_name">First Name</label>
-            <input type="text" id="first_name" name="first_name" required class="form-control small-input">
-        </div>
-        <div class="form-group">
-            <label for="last_name">Last Name</label>
-            <input type="text" id="last_name" name="last_name" required class="form-control small-input">
-        </div>
-        <div class="form-group">
-            <label for="secret_code">Secret Code</label>
-            <input type="password" id="secret_code" name="secret_code" required class="form-control small-input">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn">Submit</button>
-        </div>
-    </form>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
+<style>
+    .auth-page-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center; /* Center align the content horizontally */
+        padding-top: 20px; /* Add padding at the top */
+    }
+    .schedule-container {
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+        margin: 20px;
+    }
+    .schedule-container h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 2em;
+        color: #d9534f;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .form-group {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    .form-group label {
+        font-family: 'Cinzel', serif;
+        font-size: 1.2em;
+        color: #d9534f;
+        display: block; /* Ensure label is on a new line */
+        margin-bottom: 10px;
+    }
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-family: 'Cinzel', serif;
+    }
+    .btn {
+        background-color: #d9534f;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+        font-family: 'Cinzel', serif;
+        width: 100%;
+        text-align: center;
+    }
+    .btn:hover {
+        background-color: #c9302c;
+    }
+    .messages {
+        list-style-type: none;
+        padding: 0;
+        color: #d9534f;
+        font-family: 'Cinzel', serif;
+        font-size: 1em;
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="auth-page-container">
+    <div class="schedule-container">
+        <h2>RSVP Authentication</h2>
+        <form method="POST" action="{{ url_for('rsvp') }}" class="form">
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name" required class="form-control small-input">
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name" required class="form-control small-input">
+            </div>
+            <div class="form-group">
+                <label for="secret_code">Secret Code</label>
+                <input type="password" id="secret_code" name="secret_code" required class="form-control small-input">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Submit</button>
+            </div>
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
 </div>
 {% endblock %}
