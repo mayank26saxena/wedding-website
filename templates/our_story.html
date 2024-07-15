@@ -1,21 +1,196 @@
 {% extends "base.html" %}
-
 {% block title %}Ananya & Mayank | Our Story{% endblock %}
 
 {% block content %}
-<div class="story-container">
-    <h2>Our Story</h2>
-    <div class="story-item">
-        <h3>How We Met</h3>
-        <p>Write your story here...</p>
+<style>
+    /* Our Story Page Styles */
+    .story-page-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background-color: #fff5e1;
+        color: #333;
+    }
+
+    .section-container {
+        width: 100%;
+        max-width: 800px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .section-container h2 {
+        color: #d9534f;
+        font-family: 'Cinzel', serif;
+    }
+
+    .section-container p {
+        font-size: 18px;
+        line-height: 1.6;
+        text-align: left;
+    }
+
+    /* Timeline container */
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff5e1;
+        border-radius: 8px;
+    }
+
+    /* Vertical line */
+    .timeline::before {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color: #d9534f;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+    }
+
+    /* Container for each timeline event */
+    .timeline-event {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        background-color: inherit;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .timeline-event .year-box {
+        background-color: #d9534f;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 18px;
+        font-family: 'Cinzel', serif;
+    }
+
+    .timeline-event .card-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .timeline-event .card {
+        display: none;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: left;
+        position: relative;
+        max-width: 300px;
+        cursor: pointer;
+    }
+
+    .timeline-event .card img {
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+
+    .timeline-event .card .content {
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 6px;
+    }
+
+    .timeline-event .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .timeline::before {
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-event {
+            width: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .timeline-event .card-container {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
+
+<div class="story-page-container">
+    <div class="section-container">
+        <h2>Our Story</h2>
+        <p>
+            The year was 2011. Ananya and Mayank had been friends for a while and finally on a cold winter day, they both said “yes” to a lifetime of adventure (which they had no idea about).
+        </p>
+        <p>
+            From school to college, from living within 5 minutes of each other to moving cities, from surviving the pandemic together to building their own home, they have grown up together while making every moment count!
+        </p>
+        <p>
+            They’re each other’s best friends before anything and that’s what makes their story so special. All their friends always take their names together “Mayank Ananya” as though they always come in a combo package!
+        </p>
+        <p>
+            Ananya’s favorite thing about Mayank (and the list was long) is his smile and ever-positive attitude! If you want a pal for any adventure, no matter what it is, Mayank’s your guy!
+        </p>
+        <p>
+            Mayank’s favorite thing about Ananya (well his list was short) is XYZ.
+        </p>
+        <p>
+            <strong>Some of their favorites (in no specific order):</strong>
+            <br>Their family, hiking, travelling, navigating without google maps (and getting lost), cooking, trying out new food, dancing, crime-thrillers, spontaneous trips (planned in &lt;1 hr).
+        </p>
     </div>
-    <div class="story-item">
-        <h3>The Proposal</h3>
-        <p>Share details about the proposal here...</p>
+    <div class="section-container">
+        <h2>The Proposal</h2>
+        <p>
+            Mayank proposed to Ananya during a beautiful sunset at the beach. It was a perfect moment that they will cherish forever. Ananya said yes, and now they are excited to start their journey together.
+        </p>
     </div>
-    <div class="story-item">
-        <h3>Life Together</h3>
-        <p>Talk about your journey together...</p>
+
+    <div class="timeline">
+        <div class="timeline-event">
+            <div class="year-box" onclick="toggleCard(this)">2015</div>
+            <div class="card-container">
+                <div class="card">
+                    <img src="static/images/our-story/timeline-1.jpg" alt="2015">
+                    <div class="content">
+                        <h2>2015</h2>
+                        <p>This is the year Ananya and Mayank first met. It was a year full of new beginnings and cherished memories.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<script>
+    function toggleCard(element) {
+        var card = element.nextElementSibling.querySelector('.card');
+        if (card.style.display === "block") {
+            card.style.display = "none";
+        } else {
+            card.style.display = "block";
+        }
+    }
+</script>
 {% endblock %}
