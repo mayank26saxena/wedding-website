@@ -13,14 +13,16 @@
         box-sizing: border-box; /* Ensure padding doesn't cause overflow */
         height: auto; /* Allow the container to adjust height based on content */
         overflow-y: auto; /* Enable vertical scrolling for the entire container */
-        align-items: flex-start; /* Align items to the top */
-        justify-content: center;
+        align-items: center; /* Align items to the center */
     }
 
     @media (min-width: 768px) {
         .background-wrapper {
             flex-direction: row; /* Change to row on larger screens */
             height: 100vh; /* Ensure the container takes up the full viewport height on larger screens */
+            align-items: flex-start; /* Align items to the top */
+            justify-content: center;
+            padding-top: 20px;
         }
     }
 
