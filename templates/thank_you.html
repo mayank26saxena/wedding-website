@@ -1,6 +1,37 @@
 {% extends "base.html" %}
 {% block title %}Ananya & Mayank | Thank You{% endblock %}
 {% block content %}
-    <h1>Thank You</h1>
-    <p>Your RSVP has been received. We look forward to celebrating with you!</p>
+<style>
+    .background-wrapper {
+        background: url('static/images/rsvp/background.png') no-repeat center center fixed;
+        background-size: cover;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Align items to the top */
+        min-height: 100vh; /* Ensures the background covers the full viewport height */
+    }
+
+    .thank-you-container {
+        background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+        padding: 20px;
+        border-radius: 8px; /* Optional: adds rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow effect */
+        width: 100%;
+        max-width: 800px; /* Set a maximum width */
+        margin: 40px auto; /* Center horizontally and add top margin */
+        text-align: center;
+    }
+
+    .thank-you-container h1, .thank-you-container p {
+        color: #d9534f;
+    }
+</style>
+
+<div class="background-wrapper">
+    <div class="thank-you-container">
+        <h1>Thank You</h1>
+        <p>Your RSVP has been received. We look forward to celebrating with you!</p>
+    </div>
+</div>
 {% endblock %}

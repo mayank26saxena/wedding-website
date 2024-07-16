@@ -3,22 +3,27 @@
 
 {% block content %}
 <style>
-    .auth-page-container {
+    .background-wrapper {
+        background: url('../static/images/rsvp/background.png') no-repeat center center fixed;
+        background-size: cover;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         width: 100%;
-        align-items: center; /* Center align the content horizontally */
-        padding-top: 20px; /* Add padding at the top */
+        min-height: 100vh; /* Ensures the background covers the full viewport height */
+        align-items: center;
     }
-    .schedule-container {
-        background-color: rgba(255, 255, 255, 0.2);
+
+    .auth-container {
+        background-color: rgba(255, 255, 255, 0.2); /* White with 80% opacity */
         backdrop-filter: blur(10px);
         padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px; /* Optional: adds rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow effect */
         max-width: 500px;
         width: 100%;
         margin: 20px;
+        height: auto;
     }
     .schedule-container h2 {
         font-family: 'Cinzel', serif;
@@ -72,8 +77,8 @@
     }
 </style>
 
-<div class="auth-page-container">
-    <div class="schedule-container">
+<div class="background-wrapper">
+    <div class="auth-container">
         <h2>RSVP Authentication</h2>
         <form method="POST" action="{{ url_for('rsvp') }}" class="form">
             <div class="form-group">
