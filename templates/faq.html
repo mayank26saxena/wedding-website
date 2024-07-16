@@ -45,11 +45,11 @@
         flex: 1;
         max-width: 100%;
         height: auto; /* Adjust height for mobile view */
-        padding: 20px; /* Adjusted padding */
+        padding: 8px; /* Adjusted padding */
         display: flex;
         flex-direction: column;
         align-items: flex-start; /* Ensure content starts at the top */
-        background-color: rgba(255, 255, 255, 0); /* White with 80% opacity */
+        background-color: rgba(255, 255, 255, 0.2); /* White with 20% opacity */
         backdrop-filter: blur(10px); /* Optional: adds a blur effect behind the text */
         color: #333; /* Text color */
         border-radius: 8px; /* Optional: adds rounded corners */
@@ -60,6 +60,15 @@
             height: 100%; /* Ensure the content takes up the full height on larger screens */
             overflow-y: auto; /* Enable vertical scrolling for the content on larger screens */
         }
+    }
+    .faq-card {
+        background-color: rgba(255, 255, 255, 0.2); /* White with 80% opacity */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box; /* Ensure padding doesn't cause overflow */
     }
     .faq-content h2 {
         font-size: 2em;
@@ -104,6 +113,7 @@
         <img src="static/images/faq/thinking.jpg" alt="FAQ Image">
     </div>
     <div class="faq-content">
+        <div class="faq-card">
         <h2 class="page-heading">Frequently Asked Questions</h2>
         <div class="faq-item">
             <button class="faq-question">What is the date and location of the wedding?</button>
@@ -163,6 +173,7 @@
             <div class="faq-answer">
                 <p>Reach out to us! We’ll be more than happy to help.</p>
             </div>
+        </div>
         </div>
     </div>
 </div>
