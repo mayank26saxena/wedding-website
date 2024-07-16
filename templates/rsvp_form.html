@@ -2,24 +2,36 @@
 {% block title %}Ananya & Mayank | RSVP{% endblock %}
 {% block content %}
 <style>
+    /* RSVP Form Page Specific Styles */
     .background-wrapper {
         background: url('../static/images/backgrounds/background-3.png') no-repeat center center fixed;
         background-size: cover;
-        padding: 20px;
         display: flex;
         flex-direction: column;
         width: 100%;
         min-height: 100vh; /* Ensures the background covers the full viewport height */
+        box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+        height: auto; /* Allow the container to adjust height based on content */
+        overflow-y: auto; /* Enable vertical scrolling for the entire container */
+        align-items: center; /* Center child items horizontally */
+    }
+    @media (min-width: 768px) {
+        .background-wrapper {
+            flex-direction: row; /* Change to row on larger screens */
+            height: 100vh; /* Ensure the container takes up the full viewport height on larger screens */
+        }
     }
 
     .rsvp-form-container {
         background-color: rgba(255, 255, 255, 0.5); /* White with 80% opacity */
-        padding: 20px;
+        width: 90%; /* Ensure it doesn't exceed viewport width */
         border-radius: 8px; /* Optional: adds rounded corners */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow effect */
-        width: 100%;
         max-width: 800px; /* Set a maximum width */
-        margin: 40px auto 0; /* Center horizontally and add top margin */
+        align-items: center; /* Horizontally center content */
+        padding: 20px; /* Add padding for better spacing */
+        margin: 10px; /* Add margin to avoid touching the edges */
+        box-sizing: border-box; /* Ensure padding doesn't cause overflow */
     }
 
     .form-control {
