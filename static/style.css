@@ -10,17 +10,6 @@ body {
     min-height: 100vh;
 }
 
-/* Main Image Styles */
-.main-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.main-image img {
-    width: 100%;
-    height: auto;
-}
 
 /* Header content styling */
 .header-content {
@@ -315,10 +304,6 @@ label[for="attending"] input {
         width: 80%; /* Adjust the percentage as needed */
     }
 
-    .main-image img {
-        width: 150%; /* Adjust the percentage as needed */
-    }
-
     footer {
         position: relative; /* Ensure the footer is positioned correctly */
         bottom: 0;
@@ -331,9 +316,5 @@ label[for="attending"] input {
 @media (min-width: 768px) {
     .logo {
         padding-left: 30px; /* More padding on larger screens */
-    }
-
-    .main-image img {
-        width: 60%; /* Adjust the percentage as needed */
     }
 }

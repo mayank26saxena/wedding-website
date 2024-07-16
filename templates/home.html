@@ -11,13 +11,64 @@
         align-items: center;
         min-height: 100vh; /* Ensures the background covers the full viewport height */
     }
+
+    /* Main Image Styles */
+    .main-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .home-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        opacity: 1;
+        margin-top: 10px;
+    }
+
+    .home-details h3, .home-details h5 {
+        margin: 0;
+        color: #d9534f;
+        font-family: 'Cinzel', serif;
+    }
+
+    .home-details h3 {
+        font-size: 24px;
+    }
+
+    .home-details h5 {
+        font-size: 18px;
+    }
+
+    /* Media query for mobile view */
+    @media (max-width: 767px) {
+        .main-image img {
+            width: 150%; /* Adjust the percentage as needed */
+        }
+    }
+
+    @media (min-width: 768px) {
+        .main-image img {
+            width: 60%; /* Adjust the percentage as needed */
+        }
+    }
+
 </style>
 <div class="background-wrapper">
     <div class="main-image">
         <img src="{{ url_for('static', filename='images/home/logo.png') }}" alt="Ananya & Mayank">
     </div>
-    <div class="header-content">
-        <p>November 21st - 22nd, 2024 <br><br> {{ days_to_go }} DAYS TO GO!</p>
+    <div class="home-details">
+        <h3>November 21st - 22nd, 2024</h3>
+        <h5>{{ days_to_go }} DAYS TO GO!</h5>
     </div>
 </div>
 {% endblock %}
