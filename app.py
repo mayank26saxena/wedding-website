@@ -60,8 +60,10 @@ def rsvp():
             session['last_name'] = last_name
             return redirect(url_for('rsvp_form'))
         else:
-            flash('Invalid credentials. Please try again.')
-
+            flash(
+                'Login unsuccessful. Please check your details and try again. '
+                'If you continue to have trouble, please contact Mayank or Ananya.'
+            )
     return render_template('auth.html')
 
 @app.route('/rsvp/form', methods=['GET', 'POST'])
