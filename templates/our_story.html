@@ -49,7 +49,7 @@
     }
     .polaroid img {
         width: 100%;
-        height: 100%;
+        height: auto;
         object-fit: cover;
         border-bottom: 1px solid #ddd;
     }
@@ -81,6 +81,15 @@
             height: 100%; /* Ensure the content takes up the full height on larger screens */
             overflow-y: auto; /* Enable vertical scrolling for the content on larger screens */
         }
+    }
+    .story-card {
+        background-color: rgba(255, 255, 255, 0.2); /* White with 80% opacity */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box; /* Ensure padding doesn't cause overflow */
     }
     .story-content h2 {
         font-size: 2em;
@@ -115,21 +124,25 @@
         </div>
     </div>
     <div class="story-content">
-        <h2 class="page-heading">Our Story</h2>
-        <div class="story-item">
-            <p>The year was 2011. Ananya and Mayank had been friends for a while and finally on a cold winter day, they both said “yes” to a lifetime of adventure (which they had no idea about).</p>
-            <p>From school to college, from living within 5 minutes of each other to moving cities, from surviving the pandemic together to building their own home, they have grown up together while making every moment count!</p>
-            <p>They’re each other’s best friends before anything and that’s what makes their story so special. All their friends always take their names together “Mayank Ananya” as though they always come in a combo package!</p>
-            <p>Ananya’s favorite thing about Mayank (and the list was long) is his smile and ever-positive attitude! If you want a pal for any adventure, no matter what it is, Mayank’s your guy!</p>
-            <p>Mayank’s favorite thing about Ananya (well his list was short) is XYZ.</p>
-            <p><strong>Some of their favorites (in no specific order):</strong><br>Their family, hiking, travelling, navigating without google maps (and getting lost), cooking, trying out new food, dancing, crime-thrillers, spontaneous trips (planned in <1 hr).</p>
+        <div class="story-card">
+            <h2 class="page-heading">Our Story</h2>
+            <div class="story-item">
+                <p>The year was 2011. Ananya and Mayank had been friends for a while and finally on a cold winter day, they both said “yes” to a lifetime of adventure (which they had no idea about).</p>
+                <p>From school to college, from living within 5 minutes of each other to moving cities, from surviving the pandemic together to building their own home, they have grown up together while making every moment count!</p>
+                <p>They’re each other’s best friends before anything and that’s what makes their story so special. All their friends always take their names together “Mayank Ananya” as though they always come in a combo package!</p>
+                <p>Ananya’s favorite thing about Mayank (and the list was long) is his smile and ever-positive attitude! If you want a pal for any adventure, no matter what it is, Mayank’s your guy!</p>
+                <p>Mayank’s favorite thing about Ananya (well his list was short) is XYZ.</p>
+                <p><strong>Some of their favorites (in no specific order):</strong><br>Their family, hiking, travelling, navigating without google maps (and getting lost), cooking, trying out new food, dancing, crime-thrillers, spontaneous trips (planned in <1 hr).</p>
+            </div>
         </div>
-        <h2 class="page-heading">The Proposal</h2>
-        <div class="story-item">
-            <p>Nothing short of a dream! Masai Mara has been on Ananya’s bucket list since childhood. Those of you who know Ananya, you might know how much she loves sunsets and animals (borderline obsessed with elephants). Mayank planned this gorgeous proposal in the middle of the Mara with the help of their close friend, Mandira.</p>
-            <p>They had already been out for a day long safari and towards the end of the day, it took a lot of convincing to get Ananya out of the bed for the evening safari (HT Mandira).  After spotting a pride of lions, the jeep pulled into a hilly spot in the middle of the Mara with a tent and bonfire set-up and live music in the background! It was a cloudy day but (as cliche as it sounds), the clouds cleared up and had the sun setting over the gorgeous Mara landscape. Right when they got out of the jeep, Mayank went down on one knee and popped the question! And she said “yes”! With tears of joy in their eyes, they hugged and celebrated this start of this new chapter, looking into the sunset of this dreamy land.</p>
-            <p>And if you know Mayank, he will go an extra mile to make every moment count! Right after coming back, he had planned for a romantic dinner on a treehouse under the stars where he showed Ananya a short film that he had made with messages from their family! And the next few days, they went on another safari to celebrate this new chapter!</p>
-            <p>That day holds such a special place in their hearts and it was absolutely magical.</p>
+        <div class="story-card">
+            <h2 class="page-heading">The Proposal</h2>
+            <div class="story-item">
+                <p>Nothing short of a dream! Masai Mara has been on Ananya’s bucket list since childhood. Those of you who know Ananya, you might know how much she loves sunsets and animals (borderline obsessed with elephants). Mayank planned this gorgeous proposal in the middle of the Mara with the help of their close friend, Mandira.</p>
+                <p>They had already been out for a day long safari and towards the end of the day, it took a lot of convincing to get Ananya out of the bed for the evening safari (HT Mandira).  After spotting a pride of lions, the jeep pulled into a hilly spot in the middle of the Mara with a tent and bonfire set-up and live music in the background! It was a cloudy day but (as cliche as it sounds), the clouds cleared up and had the sun setting over the gorgeous Mara landscape. Right when they got out of the jeep, Mayank went down on one knee and popped the question! And she said “yes”! With tears of joy in their eyes, they hugged and celebrated this start of this new chapter, looking into the sunset of this dreamy land.</p>
+                <p>And if you know Mayank, he will go an extra mile to make every moment count! Right after coming back, he had planned for a romantic dinner on a treehouse under the stars where he showed Ananya a short film that he had made with messages from their family! And the next few days, they went on another safari to celebrate this new chapter!</p>
+                <p>That day holds such a special place in their hearts and it was absolutely magical.</p>
+            </div>
         </div>
     </div>
 </div>
