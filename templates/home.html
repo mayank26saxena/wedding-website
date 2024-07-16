@@ -1,24 +1,10 @@
 {% extends "base.html" %}
-
 {% block title %}Ananya & Mayank{% endblock %}
-
 {% block content %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-<main>
 <div class="main-image">
     <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Ananya & Mayank">
 </div>
 <div class="header-content">
-    <p>November 21st - 22nd, 2024<br> <br> {{ days_to_go }} DAYS TO GO!</p>
+    <p>November 21st - 22nd, 2024 <br><br> {{ days_to_go }} DAYS TO GO!</p>
 </div>
-</main>
 {% endblock %}
-</body>
-</html>

@@ -10,13 +10,20 @@ body {
     min-height: 100vh;
 }
 
-.main-image img {
-    width: 100%;
-    max-width: 1000px;  /* Adjust the size as needed */
-    display: block;
-    margin: 0 auto;
+/* Main Image Styles */
+.main-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 
+.main-image img {
+    width: 100%;
+    height: auto;
+}
+
+/* Header content styling */
 .header-content {
     text-align: center;
     margin-top: 20px;
@@ -36,6 +43,7 @@ body {
     color: #5d4037;
 }
 
+/* Header and Navbar styling */
 header {
     position: sticky;
     top: 0;
@@ -58,7 +66,7 @@ nav {
     width: 100%;
 }
 
-/* Logo styles */
+    /* Logo styles */
 .logo {
     margin-right: auto;  /* Pushes the logo to the left */
     padding-left: 20px;  /* Default padding */
@@ -69,7 +77,6 @@ nav {
     color: #d9534f;
     font-size: 24px;
     font-weight: bold;
-    padding-left: 1px;  /* Adds padding to the left */
 }
 
 /* Navigation links container */
@@ -106,59 +113,13 @@ nav {
     transition: all 0.3s ease;
 }
 
-/* Media query for mobile view */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background-color: #ffe4b5;
-    }
-
-    .nav-links.open {
-        display: flex;
-    }
-
-    .nav-links a {
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    nav {
-        justify-content: space-between;  /* Ensures the logo stays on the left */
-    }
-
-    @media (max-width: 600px) {
-        .logo {
-            padding-left: 10px;  /* Less padding on smaller screens */
-        }
-    }
-
-    @media (min-width: 769px) {
-        .logo {
-            padding-left: 30px;  /* More padding on larger screens */
-        }
-}
-
-/* Main Content */
-main {
-    flex: 1;
-    padding: 20px;
-    padding-top: 10px; /* Add padding to create space between the navbar and the content */
-}
-
+/* Footer styling */
 footer {
     background-color: #ffecd2;
     padding: 10px 0;
     text-align: center;
     border-top: 1px solid #ddd;
+    position: relative;
 }
 
 .footer-content p {
@@ -167,6 +128,12 @@ footer {
     color: #5d4037;
 }
 
+/* Main Content */
+main {
+    flex: 1;
+    padding: 20px;
+    padding-top: 10px; /* Add padding to create space between the navbar and the content */
+}
 
 /* Additional Styles for Forms and Containers */
 .form {
@@ -221,7 +188,6 @@ footer {
     color: #d9534f;
     margin-top: 10px;
 }
-
 
 /* FAQ, Travel, Story, RSVP, and Schedule Containers */
 .faq-container, .travel-container, .story-container, .rsvp-container, .schedule-container {
@@ -308,10 +274,6 @@ input[type="submit"]:hover {
     background-color: #45a049;
 }
 
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
 label[for="attending"] {
     display: flex;
     align-items: center;
@@ -321,27 +283,58 @@ label[for="attending"] input {
     margin-right: 10px;
 }
 
-@media (max-width: 600px) {
-    nav a {
-        margin: 5px 10px; /* Adjust spacing for smaller screens */
-        font-size: 14px; /* Adjust font size for smaller screens */
+/* Media query for mobile view */
+@media (max-width: 767px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #ffe4b5;
     }
 
-    .container, .rsvp-container, .travel-container, .faq-container {
-        padding: 10px; /* Reduce padding for smaller screens */
+    .nav-links.open {
+        display: flex;
     }
 
-    .btn {
-        width: 100%; /* Full width buttons on smaller screens */
-        padding: 15px; /* Increase padding for better touch targets */
+    .nav-links a {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: flex;
     }
 
     nav {
-        justify-content: center;
-        align-items: center;
+        justify-content: space-between; /* Ensures the logo stays on the left */
     }
 
-    .header-content {
-        margin-top: 80px; /* Ensure content is not hidden behind sticky navbar */
+    .logo img {
+        width: 80%; /* Adjust the percentage as needed */
+    }
+
+    .main-image img {
+        width: 200%; /* Adjust the percentage as needed */
+    }
+
+    footer {
+        position: relative; /* Ensure the footer is positioned correctly */
+        bottom: 0;
+        width: 100%;
+        height: auto; /* Ensure the height adjusts to content */
+        margin-top: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .logo {
+        padding-left: 30px; /* More padding on larger screens */
+    }
+
+    .main-image img {
+        width: 60%; /* Adjust the percentage as needed */
     }
 }
