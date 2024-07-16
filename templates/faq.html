@@ -12,6 +12,7 @@
         align-items: stretch; /* Make sure child items stretch to the same height */
         background: url('../static/images/backgrounds/background.png') no-repeat center center fixed;
         background-size: cover;
+
     }
     @media (min-width: 768px) {
         .faq-page-container {
@@ -26,8 +27,6 @@
         height: auto; /* Ensure the image container takes up the appropriate height on mobile */
         overflow: hidden;
         display: flex;
-        align-items: center; /* Align items to the center */
-        justify-content: center; /* Center the image */
     }
     @media (min-width: 768px) {
         .image-container {
@@ -39,6 +38,8 @@
         width: 100%;
         height: auto; /* Ensure the image maintains its aspect ratio */
         object-fit: cover; /* Ensure the image covers the container without distortion */
+        margin-top: 0;
+        padding-top: 0;
     }
     .faq-content {
         flex: 1;

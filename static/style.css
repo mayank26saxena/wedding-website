@@ -25,7 +25,7 @@ body {
 /* Header content styling */
 .header-content {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 .header-content h1 {
@@ -130,8 +130,7 @@ footer {
 /* Main Content */
 main {
     flex: 1;
-    padding: 20px;
-    padding-top: 10px; /* Add padding to create space between the navbar and the content */
+    padding: 0;
 }
 
 /* Additional Styles for Forms and Containers */
@@ -305,6 +304,7 @@ label[for="attending"] input {
 
     .hamburger {
         display: flex;
+        padding: 10px 20px; /* Add padding to ensure alignment */
     }
 
     nav {
@@ -316,7 +316,7 @@ label[for="attending"] input {
     }
 
     .main-image img {
-        width: 200%; /* Adjust the percentage as needed */
+        width: 150%; /* Adjust the percentage as needed */
     }
 
     footer {
