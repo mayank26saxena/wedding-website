@@ -22,12 +22,13 @@
     .slideshow-container {
         flex: 1;
         position: relative;
-        max-width: 100%;
-        height: auto; /* Ensure the image container takes up the appropriate height on mobile */
-        overflow: hidden;
+        width: 100%;
+        min-height: 66vh; /* Ensure the image container takes up the appropriate height on mobile */
+        max-height: 500px;
         display: flex;
-        align-items: center; /* Align items to the center */
+        align-items: flex-start; /* Align items to the center */
         justify-content: center; /* Center the image */
+        padding-top: 10px;
     }
     @media (min-width: 768px) {
         .slideshow-container {
@@ -41,15 +42,14 @@
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         text-align: center;
-        width: 100%; /* Adjust the width of the polaroid */
-        max-width: 300px; /* Max width for the polaroid */
+        width: 90%; /* Adjust the width of the polaroid */
         transition: opacity 2s ease-in-out; /* Slower fade transition */
         opacity: 0; /* Start slides as invisible */
         position: absolute;
     }
     .polaroid img {
         width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
         border-bottom: 1px solid #ddd;
     }
@@ -66,7 +66,7 @@
         flex: 1;
         max-width: 100%;
         height: auto; /* Adjust height for mobile view */
-        padding: 20px; /* Adjusted padding */
+        padding: 8px; /* Adjusted padding */
         display: flex;
         flex-direction: column;
         align-items: flex-start; /* Ensure content starts at the top */
