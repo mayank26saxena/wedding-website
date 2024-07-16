@@ -3,203 +3,154 @@
 
 {% block content %}
 <style>
-    /* Our Story Page Styles */
     .story-page-container {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        background-color: #fff5e1;
+        flex-direction: column; /* Change to column on mobile */
+        width: 100%;
+        height: auto; /* Allow the container to adjust height based on content */
+        overflow-y: auto; /* Enable vertical scrolling for the entire container */
+        align-items: stretch; /* Make sure child items stretch to the same height */
+        background: url('static/images/backgrounds/background.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+    @media (min-width: 768px) {
+        .story-page-container {
+            flex-direction: row; /* Change to row on larger screens */
+            height: 100vh; /* Ensure the container takes up the full viewport height on larger screens */
+        }
+    }
+    .slideshow-container {
+        flex: 1;
+        position: relative;
+        max-width: 100%;
+        height: 50vh; /* Ensure the image container takes up half the height on mobile */
+        overflow: hidden;
+        display: flex;
+        align-items: center; /* Align items to the center */
+        justify-content: center; /* Center the image */
+    }
+    @media (min-width: 768px) {
+        .slideshow-container {
+            max-width: 33%;
+            height: 100%; /* Ensure the image container takes up the full height on larger screens */
+        }
+    }
+    .polaroid {
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 100%; /* Adjust the width of the polaroid */
+        max-width: 300px; /* Max width for the polaroid */
+        transition: opacity 2s ease-in-out; /* Slower fade transition */
+        opacity: 0; /* Start slides as invisible */
+        position: absolute;
+    }
+    .polaroid img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-bottom: 1px solid #ddd;
+    }
+    .polaroid .caption {
+        margin-top: 10px;
+        font-family: 'Cinzel', serif;
+        font-size: 14px;
         color: #333;
     }
-
-    .section-container {
-        width: 100%;
-        max-width: 800px;
-        margin-bottom: 40px;
-        text-align: center;
+    .active-slide {
+        opacity: 1; /* Fade in active slide */
     }
-
-    .section-container h2 {
-        color: #d9534f;
-        font-family: 'Cinzel', serif;
-    }
-
-    .section-container p {
-        font-size: 18px;
-        line-height: 1.6;
-        text-align: left;
-    }
-
-    /* Timeline container */
-    .timeline {
+    .story-content {
+        flex: 1;
+        max-width: 100%;
+        height: auto; /* Adjust height for mobile view */
+        padding: 20px; /* Adjusted padding */
         display: flex;
         flex-direction: column;
-        align-items: center;
-        position: relative;
-        width: 100%;
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff5e1;
-        border-radius: 8px;
+        align-items: flex-start; /* Ensure content starts at the top */
+        background-color: rgba(255, 255, 255, 0.2); /* White with 20% opacity */
+        backdrop-filter: blur(10px); /* Optional: adds a blur effect behind the text */
+        color: #333; /* Text color */
+        border-radius: 8px; /* Optional: adds rounded corners */
     }
-
-    /* Vertical line */
-    .timeline::before {
-        content: '';
-        position: absolute;
-        width: 6px;
-        background-color: #d9534f;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -3px;
+    @media (min-width: 768px) {
+        .story-content {
+            max-width: 67%;
+            height: 100%; /* Ensure the content takes up the full height on larger screens */
+            overflow-y: auto; /* Enable vertical scrolling for the content on larger screens */
+        }
     }
-
-    /* Container for each timeline event */
-    .timeline-event {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        background-color: inherit;
-        width: 100%;
-        text-align: center;
+    .story-content h2 {
+        font-size: 2em;
         margin-bottom: 20px;
+        width: 100%; /* Ensure the heading covers the full width */
+        color: #d9534f; /* Updated color */
+        font-family: 'Cinzel', serif; /* Updated font-family */
+        text-transform: uppercase; /* Example text transformation */
+        text-align: left; /* Left align the heading */
+        margin: 0; /* Remove default margin */
+        padding: 20px 0; /* Add padding to the heading */
     }
-
-    .timeline-event .year-box {
-        background-color: #d9534f;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 18px;
-        font-family: 'Cinzel', serif;
-    }
-
-    .timeline-event .card-container {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .timeline-event .card {
-        display: none;
-        padding: 20px;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s, box-shadow 0.3s;
-        text-align: left;
-        position: relative;
-        max-width: 300px;
-        cursor: pointer;
-    }
-
-    .timeline-event .card img {
-        width: 100%;
-        border-bottom: 1px solid #ddd;
-        margin-bottom: 10px;
-    }
-
-    .timeline-event .card .content {
-        padding: 10px;
-        background-color: #fff;
-        border-radius: 6px;
-    }
-
-    .timeline-event .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .timeline::before {
-            left: 50%;
-            margin-left: -3px;
-        }
-
-        .timeline-event {
-            width: 100%;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        .timeline-event .card-container {
-            flex-direction: column;
-            align-items: center;
-        }
+    .story-item {
+        margin-bottom: 20px;
+        width: 100%; /* Ensure each story item covers the full width */
     }
 </style>
 
 <div class="story-page-container">
-    <div class="section-container">
-        <h2>Our Story</h2>
-        <p>
-            The year was 2011. Ananya and Mayank had been friends for a while and finally on a cold winter day, they both said “yes” to a lifetime of adventure (which they had no idea about).
-        </p>
-        <p>
-            From school to college, from living within 5 minutes of each other to moving cities, from surviving the pandemic together to building their own home, they have grown up together while making every moment count!
-        </p>
-        <p>
-            They’re each other’s best friends before anything and that’s what makes their story so special. All their friends always take their names together “Mayank Ananya” as though they always come in a combo package!
-        </p>
-        <p>
-            Ananya’s favorite thing about Mayank (and the list was long) is his smile and ever-positive attitude! If you want a pal for any adventure, no matter what it is, Mayank’s your guy!
-        </p>
-        <p>
-            Mayank’s favorite thing about Ananya (well his list was short) is XYZ.
-        </p>
-        <p>
-            <strong>Some of their favorites (in no specific order):</strong>
-            <br>Their family, hiking, travelling, navigating without google maps (and getting lost), cooking, trying out new food, dancing, crime-thrillers, spontaneous trips (planned in &lt;1 hr).
-        </p>
+    <div class="slideshow-container">
+        <div class="polaroid active-slide">
+            <img src="../static/images/our-story/timeline-1.jpg" alt="Polaroid Image 1">
+            <div class="caption">Caption for Image 1</div>
+        </div>
+        <div class="polaroid">
+            <img src="../static/images/our-story/timeline-2.jpg" alt="Polaroid Image 2">
+            <div class="caption">Caption for Image 2</div>
+        </div>
+        <div class="polaroid">
+            <img src="../static/images/our-story/timeline-3.jpg" alt="Polaroid Image 3">
+            <div class="caption">Caption for Image 3</div>
+        </div>
     </div>
-    <div class="section-container">
-        <h2>The Proposal</h2>
-        <p>
-            Nothing short of a dream! Masai Mara has been on Ananya’s bucket list since childhood. Those of you who know Ananya, you might know how much she loves sunsets and animals (borderline obsessed with elephants). Mayank planned this gorgeous proposal in the middle of the Mara with the help of their close friend, Mandira.
-        </p>
-        <p>
-            They had already been out for a day long safari and towards the end of the day, it took a lot of convincing to get Ananya out of the bed for the evening safari (HT Mandira).  After spotting a pride of lions, the jeep pulled into a hilly spot in the middle of the Mara with a tent and bonfire set-up and live music in the background! It was a cloudy day but (as cliche as it sounds), the clouds cleared up and had the sun setting over the gorgeous Mara landscape. Right when they got out of the jeep, Mayank went down on one knee and popped the question! And she said “yes”! With tears of joy in their eyes, they hugged and celebrated this start of this new chapter, looking into the sunset of this dreamy land.
-        </p>
-        <p>
-            And if you know Mayank, he will go an extra mile to make every moment count! Right after coming back, he had planned for a romantic dinner on a treehouse under the stars where he showed Ananya a short film that he had made with messages from their family! And the next few days, they went on another safari to celebrate this new chapter!
-        </p>
-        <p>
-            That day holds such a special place in their hearts and it was absolutely magical.
-        </p>
-    </div>
-
-    <div class="timeline">
-        <div class="timeline-event">
-            <div class="year-box" onclick="toggleCard(this)">2015</div>
-            <div class="card-container">
-                <div class="card">
-                    <img src="static/images/our-story/timeline-1.jpg" alt="2015">
-                    <div class="content">
-                        <h2>2015</h2>
-                        <p>This is the year Ananya and Mayank first met. It was a year full of new beginnings and cherished memories.</p>
-                    </div>
-                </div>
-            </div>
+    <div class="story-content">
+        <h2 class="page-heading">Our Story</h2>
+        <div class="story-item">
+            <p>The year was 2011. Ananya and Mayank had been friends for a while and finally on a cold winter day, they both said “yes” to a lifetime of adventure (which they had no idea about).</p>
+            <p>From school to college, from living within 5 minutes of each other to moving cities, from surviving the pandemic together to building their own home, they have grown up together while making every moment count!</p>
+            <p>They’re each other’s best friends before anything and that’s what makes their story so special. All their friends always take their names together “Mayank Ananya” as though they always come in a combo package!</p>
+            <p>Ananya’s favorite thing about Mayank (and the list was long) is his smile and ever-positive attitude! If you want a pal for any adventure, no matter what it is, Mayank’s your guy!</p>
+            <p>Mayank’s favorite thing about Ananya (well his list was short) is XYZ.</p>
+            <p><strong>Some of their favorites (in no specific order):</strong><br>Their family, hiking, travelling, navigating without google maps (and getting lost), cooking, trying out new food, dancing, crime-thrillers, spontaneous trips (planned in <1 hr).</p>
+        </div>
+        <h2 class="page-heading">The Proposal</h2>
+        <div class="story-item">
+            <p>Nothing short of a dream! Masai Mara has been on Ananya’s bucket list since childhood. Those of you who know Ananya, you might know how much she loves sunsets and animals (borderline obsessed with elephants). Mayank planned this gorgeous proposal in the middle of the Mara with the help of their close friend, Mandira.</p>
+            <p>They had already been out for a day long safari and towards the end of the day, it took a lot of convincing to get Ananya out of the bed for the evening safari (HT Mandira).  After spotting a pride of lions, the jeep pulled into a hilly spot in the middle of the Mara with a tent and bonfire set-up and live music in the background! It was a cloudy day but (as cliche as it sounds), the clouds cleared up and had the sun setting over the gorgeous Mara landscape. Right when they got out of the jeep, Mayank went down on one knee and popped the question! And she said “yes”! With tears of joy in their eyes, they hugged and celebrated this start of this new chapter, looking into the sunset of this dreamy land.</p>
+            <p>And if you know Mayank, he will go an extra mile to make every moment count! Right after coming back, he had planned for a romantic dinner on a treehouse under the stars where he showed Ananya a short film that he had made with messages from their family! And the next few days, they went on another safari to celebrate this new chapter!</p>
+            <p>That day holds such a special place in their hearts and it was absolutely magical.</p>
         </div>
     </div>
 </div>
 
 <script>
-    function toggleCard(element) {
-        var card = element.nextElementSibling.querySelector('.card');
-        if (card.style.display === "block") {
-            card.style.display = "none";
-        } else {
-            card.style.display = "block";
+    // JavaScript for the slideshow
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName('polaroid');
+    const totalSlides = slides.length;
+
+    function showSlides() {
+        for (let i = 0; i < totalSlides; i++) {
+            slides[i].classList.remove('active-slide');
         }
+        slideIndex++;
+        if (slideIndex > totalSlides) {
+            slideIndex = 1;
+        }
+        slides[slideIndex - 1].classList.add('active-slide');
+        setTimeout(showSlides, 3000); // Change image every 3 seconds
     }
+    showSlides();
 </script>
 {% endblock %}
