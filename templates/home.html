@@ -3,10 +3,9 @@
 {% block content %}
 <style>
     body, html {
-        overflow-x: hidden; /* Prevent horizontal scrolling */
-        overflow-y: hidden; /* Prevent vertical scrolling */
-        height: 100%; /* Ensure full height for centering */
+        overflow: hidden; /* Prevent horizontal scrolling */
         margin: 0;
+        padding: 0;
     }
 
     .background-wrapper {
@@ -67,6 +66,10 @@
         .logo-container img {
             width: 60%; /* Adjust the percentage as needed */
         }
+    }
+
+    footer {
+        flex-shrink: 0; /* Ensure footer stays at the bottom */
     }
 
 </style>
