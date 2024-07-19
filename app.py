@@ -86,6 +86,7 @@ def rsvp_form():
             dietary_restrictions = request.form.get('dietary_restrictions', '')
             hashtag_suggestions = request.form.get('hashtag_suggestions', '')
             contact_info = request.form['contact_info']
+            additional_notes = request.form['additional_notes']
         else:
             people = ''
             arrival_day = ''
@@ -96,6 +97,7 @@ def rsvp_form():
             dietary_restrictions = ''
             hashtag_suggestions = ''
             contact_info = ''
+            additional_notes = ''
 
         # Get the current time in UTC
         utc_time = datetime.now(pytz.utc).strftime('%Y-%m-%d %H:%M:%S')
@@ -118,13 +120,15 @@ def rsvp_form():
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Hashtag Suggestions') + 1, hashtag_suggestions)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Contact Info') + 1, contact_info)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Last Updated') + 1, utc_time)
+                rsvp_sheet.update_cell(i, list(record.keys()).index('Additional Notes') + 1, additional_notes)
                 updated = True
                 break
 
         if not updated:
             # Append a new record if no existing record is found
             rsvp_sheet.append_row([first_name, last_name, attendance, people, arrival_day, direct_arrival, need_transportation,
-                                   transportation_from, pickup_time, dietary_restrictions, hashtag_suggestions, contact_info, utc_time])
+                                   transportation_from, pickup_time, dietary_restrictions, hashtag_suggestions,
+                                   contact_info, additional_notes, utc_time])
 
         return redirect(url_for('thank_you'))
 
