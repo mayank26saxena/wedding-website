@@ -120,11 +120,19 @@
                     </select>
                 </div>
                 <div class="form-group" id="transportation_group" style="display: none;">
-                    <label for="need_transportation">Will you need transportation from the airport / railway station?</label>
+                    <label for="need_transportation">Will you need transportation?</label>
                     <select id="need_transportation" name="need_transportation" class="form-control">
                         <option value="" disabled selected>Select an option</option>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group" id="transportation_from_group" style="display: none;">
+                    <label for="transportation_from">Where will you need transportation from?</label>
+                    <select id="transportation_from" name="transportation_from" class="form-control">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="airport">Airport</option>
+                        <option value="railway_station">Railway Station</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -163,6 +171,15 @@
             transportationGroup.style.display = 'block';
         } else {
             transportationGroup.style.display = 'none';
+        }
+    });
+
+    document.getElementById('need_transportation').addEventListener('change', function () {
+        var transportationFromGroup = document.getElementById('transportation_from_group');
+        if (this.value === 'yes') {
+            transportationFromGroup.style.display = 'block';
+        } else {
+            transportationFromGroup.style.display = 'none';
         }
     });
 </script>
