@@ -120,7 +120,7 @@
                     </select>
                 </div>
                 <div class="form-group" id="transportation_group" style="display: none;">
-                    <label for="need_transportation">Will you need transportation?</label>
+                    <label for="need_transportation">Will you need transportation from the airport / railway station?</label>
                     <select id="need_transportation" name="need_transportation" class="form-control">
                         <option value="" disabled selected>Select an option</option>
                         <option value="yes">Yes</option>
@@ -134,6 +134,10 @@
                         <option value="airport">Airport</option>
                         <option value="railway_station">Railway Station</option>
                     </select>
+                </div>
+                <div class="form-group" id="pickup_time_group" style="display: none;">
+                    <label for="pickup_time">What time will you need to be picked up?</label>
+                    <input type="text" id="pickup_time" name="pickup_time" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="dietary_restrictions">Do you have any dietary restrictions?</label>
@@ -155,6 +159,7 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     document.getElementById('attendance').addEventListener('change', function () {
         var additionalQuestions = document.getElementById('additional-questions');
@@ -181,6 +186,23 @@
         } else {
             transportationFromGroup.style.display = 'none';
         }
+    });
+
+    document.getElementById('transportation_from').addEventListener('change', function () {
+        var pickupTimeGroup = document.getElementById('pickup_time_group');
+        if (this.value) {
+            pickupTimeGroup.style.display = 'block';
+        } else {
+            pickupTimeGroup.style.display = 'none';
+        }
+    });
+
+    // Initialize Flatpickr on the time input
+    flatpickr("#pickup_time", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true
     });
 </script>
 {% endblock %}

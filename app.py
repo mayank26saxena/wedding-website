@@ -82,6 +82,7 @@ def rsvp_form():
             direct_arrival = request.form['direct_arrival']
             need_transportation = request.form.get('need_transportation', '')
             transportation_from = request.form.get('transportation_from')
+            pickup_time = request.form.get('pickup_time')
             dietary_restrictions = request.form.get('dietary_restrictions', '')
             hashtag_suggestions = request.form.get('hashtag_suggestions', '')
             contact_info = request.form['contact_info']
@@ -91,6 +92,7 @@ def rsvp_form():
             direct_arrival = ''
             need_transportation = ''
             transportation_from = ''
+            pickup_time = ''
             dietary_restrictions = ''
             hashtag_suggestions = ''
             contact_info = ''
@@ -111,6 +113,7 @@ def rsvp_form():
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Direct Arrival') + 1, direct_arrival)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Need Transportation') + 1, need_transportation)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Transportation From') + 1, transportation_from)
+                rsvp_sheet.update_cell(i, list(record.keys()).index('Pickup Time') + 1, pickup_time)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Dietary Restrictions') + 1, dietary_restrictions)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Hashtag Suggestions') + 1, hashtag_suggestions)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Contact Info') + 1, contact_info)
@@ -121,7 +124,7 @@ def rsvp_form():
         if not updated:
             # Append a new record if no existing record is found
             rsvp_sheet.append_row([first_name, last_name, attendance, people, arrival_day, direct_arrival, need_transportation,
-                                   transportation_from, dietary_restrictions, hashtag_suggestions, contact_info, utc_time])
+                                   transportation_from, pickup_time, dietary_restrictions, hashtag_suggestions, contact_info, utc_time])
 
         return redirect(url_for('thank_you'))
 
