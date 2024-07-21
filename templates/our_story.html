@@ -110,18 +110,12 @@
 
 <div class="story-page-container">
     <div class="slideshow-container">
-        <div class="polaroid active-slide">
-            <img src="../static/images/our-story/timeline-1.jpg" alt="Polaroid Image 1">
-            <div class="caption">Caption for Image 1</div>
+        {% for i in range(1,30) %}
+        <div class="polaroid {% if i == 0 %}active-slide{% endif %}">
+            <img src="../static/images/our-story/timeline-{{ i }}.jpg" alt="Polaroid Image {{ i }}">
+            <div class="caption">Caption for Image {{ i }}</div>
         </div>
-        <div class="polaroid">
-            <img src="../static/images/our-story/timeline-2.jpg" alt="Polaroid Image 2">
-            <div class="caption">Caption for Image 2</div>
-        </div>
-        <div class="polaroid">
-            <img src="../static/images/our-story/timeline-3.jpg" alt="Polaroid Image 3">
-            <div class="caption">Caption for Image 3</div>
-        </div>
+        {% endfor %}
     </div>
     <div class="story-content">
         <div class="story-card">
