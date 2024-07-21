@@ -50,6 +50,10 @@ def rsvp():
         last_name = request.form['last_name'].strip()
         secret_code = request.form['secret_code'].strip()
 
+        if get_rsvp_status(first_name, last_name, secret_code):
+            flash("You have already submitted your RSVP. Please contact Mayank or Ananya to update it.")
+            return render_template('auth.html')
+
         # Verify against Google Sheet
         guest_list = guest_list_sheet.get_all_records()
         guest = next((guest for guest in guest_list if guest['First Name'].strip().lower() == first_name.lower() and guest['Last Name'].strip().lower() == last_name.lower() and guest['Secret Code'] == secret_code), None)
@@ -58,6 +62,7 @@ def rsvp():
             session['authenticated'] = True
             session['first_name'] = first_name
             session['last_name'] = last_name
+            session['secret_code'] = secret_code
             return redirect(url_for('rsvp_form'))
         else:
             flash(
@@ -75,6 +80,7 @@ def rsvp_form():
         attendance = request.form['attendance']
         first_name = session['first_name']
         last_name = session['last_name']
+        secret_code = session['secret_code']
 
         if attendance == 'yes':
             people = request.form['people']
@@ -87,6 +93,7 @@ def rsvp_form():
             hashtag_suggestions = request.form.get('hashtag_suggestions', '')
             contact_info = request.form['contact_info']
             additional_notes = request.form['additional_notes']
+            rsvp_update_allowed = 'No'
         else:
             people = ''
             arrival_day = ''
@@ -98,6 +105,7 @@ def rsvp_form():
             hashtag_suggestions = ''
             contact_info = ''
             additional_notes = ''
+            rsvp_update_allowed = 'No'
 
         # Get the current time in UTC
         utc_time = datetime.now(pytz.utc).strftime('%Y-%m-%d %H:%M:%S')
@@ -119,16 +127,17 @@ def rsvp_form():
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Dietary Restrictions') + 1, dietary_restrictions)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Hashtag Suggestions') + 1, hashtag_suggestions)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Contact Info') + 1, contact_info)
-                rsvp_sheet.update_cell(i, list(record.keys()).index('Last Updated') + 1, utc_time)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Additional Notes') + 1, additional_notes)
+                rsvp_sheet.update_cell(i, list(record.keys()).index('Last Updated') + 1, utc_time)
+                rsvp_sheet.update_cell(i, list(record.keys()).index('RSVP Update Allowed') + 1, rsvp_update_allowed)
                 updated = True
                 break
 
         if not updated:
             # Append a new record if no existing record is found
-            rsvp_sheet.append_row([first_name, last_name, attendance, people, arrival_day, direct_arrival, need_transportation,
+            rsvp_sheet.append_row([first_name, last_name, secret_code, attendance, people, arrival_day, direct_arrival, need_transportation,
                                    transportation_from, pickup_time, dietary_restrictions, hashtag_suggestions,
-                                   contact_info, additional_notes, utc_time])
+                                   contact_info, additional_notes, utc_time, rsvp_update_allowed])
 
         return redirect(url_for('thank_you'))
 
@@ -137,6 +146,13 @@ def rsvp_form():
 @app.route('/thank-you')
 def thank_you():
     return render_template('thank_you.html')
+
+def get_rsvp_status(first_name, last_name, secret_code):
+    records = rsvp_sheet.get_all_records()
+    for record in records:
+        if (record['First Name'] == first_name and record['Last Name'] == last_name and record['Secret Code'] == secret_code):
+            return record['RSVP Update Allowed'] == 'No'
+    return False
 
 if __name__ == '__main__':
     app.run(debug=True)
