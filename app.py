@@ -29,7 +29,9 @@ def home():
 
 @app.route('/our_story')
 def our_story():
-    return render_template('our_story.html')
+    with open('static/images/our-story/captions.txt', 'r') as file:
+        captions = [line.strip() for line in file.readlines()]
+    return render_template('our_story.html', captions=captions)
 
 @app.route('/schedule')
 def schedule():
