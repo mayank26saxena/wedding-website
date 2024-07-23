@@ -23,19 +23,57 @@
         flex: 1;
         position: relative;
         width: 100%;
-        min-height: 66vh; /* Ensure the image container takes up the appropriate height on mobile */
+        min-height: 50vh; /* Ensure the image container takes up the appropriate height on mobile */
         max-height: 500px;
         display: flex;
         align-items: flex-start; /* Align items to the center */
         justify-content: center; /* Center the image */
         padding-top: 10px;
     }
+
     @media (min-width: 768px) {
         .slideshow-container {
             max-width: 33%;
             height: 100%; /* Ensure the image container takes up the full height on larger screens */
         }
     }
+
+
+    /* Media query for iPhone SE (375x667) */
+    @media screen and (min-width: 360px) and (max-width: 375px) and (max-height: 667px) {
+        .slideshow-container {
+            min-height: 70vh; /* Set the desired minimum height for iPhone SE */
+        }
+    }
+
+    /* Media query for iPhone XR (414x896) */
+    @media screen and (min-width: 376px) and (max-width: 414px) and (max-height: 896px) {
+        .slideshow-container {
+            min-height: 52vh; /* Set the desired minimum height for iPhone XR */
+        }
+    }
+
+    /* Media query for iPhone 12 Pro (390x844) */
+    @media screen and (min-width: 390px) and (max-width: 390px) and (max-height: 844px) {
+        .slideshow-container {
+            min-height: 55vh; /* Set the desired minimum height for iPhone 12 Pro */
+        }
+    }
+
+    /* Media query for iPhone 14 Pro Max (430x932) */
+    @media screen and (min-width: 430px) and (max-width: 430px) and (max-height: 932px) {
+        .slideshow-container {
+            min-height: 50vh; /* Set the desired minimum height for iPhone 14 Pro Max */
+        }
+    }
+
+    /* Media query for Samsung Galaxy S8+ (360x740) */
+    @media screen and (min-width: 360px) and (max-width: 360px) and (max-height: 740px) {
+        .slideshow-container {
+            min-height: 63vh; /* Set the desired minimum height for Samsung Galaxy S8+ */
+        }
+    }
+
     .polaroid {
         background: white;
         padding: 10px;
@@ -49,8 +87,9 @@
     }
     .polaroid img {
         width: 100%;
-        height: auto;
+        height: 400px; /* Fixed height for consistency */
         object-fit: cover;
+        object-position: center; /* Center the image */
         border-bottom: 1px solid #ddd;
     }
     .polaroid .caption {
@@ -110,8 +149,8 @@
 
 <div class="story-page-container">
     <div class="slideshow-container">
-        {% for i in range(1,30) %}
-        <div class="polaroid {% if i == 0 %}active-slide{% endif %}">
+        {% for i in range(1, 30) %}
+        <div class="polaroid {% if i == 1 %}active-slide{% endif %}">
             <img src="../static/images/our-story/timeline-{{ i }}.jpg" alt="Polaroid Image {{ i }}">
             <div class="caption">Caption for Image {{ i }}</div>
         </div>
@@ -156,8 +195,19 @@
             slideIndex = 1;
         }
         slides[slideIndex - 1].classList.add('active-slide');
-        setTimeout(showSlides, 3000); // Change image every 3 seconds
+        setTimeout(showSlides, 2000); // Change image every 3 seconds
     }
     showSlides();
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.slider').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+            dots: true,
+        });
+    });
 </script>
 {% endblock %}
