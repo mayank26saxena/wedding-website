@@ -13,29 +13,43 @@
         background: url('../static/images/backgrounds/background.png') no-repeat center center fixed;
         background-size: cover;
     }
+
     @media (min-width: 768px) {
         .story-page-container {
             flex-direction: row; /* Change to row on larger screens */
             height: 100vh; /* Ensure the container takes up the full viewport height on larger screens */
         }
     }
+
     .slideshow-container {
         flex: 1;
         position: relative;
         width: 100%;
         min-height: 50vh; /* Ensure the image container takes up the appropriate height on mobile */
-        max-height: 400px;
+        max-height: 500px;
         display: flex;
-        align-items: flex-start; /* Align items to the center */
+        align-items: center; /* Center the image */
         justify-content: center; /* Center the image */
-        padding-top: 10px;
-        padding-bottom: 10px;
+        margin-bottom: 20px; /* Add margin to avoid overlap */
     }
 
     @media (min-width: 768px) {
         .slideshow-container {
             max-width: 33%;
             height: 100%; /* Ensure the image container takes up the full height on larger screens */
+            margin-bottom: 0; /* Remove bottom margin for larger screens */
+        }
+    }
+
+    /* Media query for iPhone 14 Pro (393x852) */
+    @media screen and (min-width: 393px) and (max-width: 393px) and (max-height: 852px) {
+        .slideshow-container {
+            min-height: 60vh; /* Set the desired minimum height for iPhone 14 Pro */
+        }
+
+        .story-content {
+            padding-top: 20px; /* Add padding to avoid overlap */
+            margin-top: 20px; /* Ensure enough space between containers */
         }
     }
 
@@ -86,6 +100,7 @@
         opacity: 0; /* Start slides as invisible */
         position: absolute;
     }
+
     .polaroid img {
         width: 100%;
         height: 400px; /* Fixed height for consistency */
@@ -93,20 +108,23 @@
         object-position: center; /* Center the image */
         border-bottom: 1px solid #ddd;
     }
+
     .polaroid .caption {
         margin-top: 10px;
         font-family: 'Cinzel', serif;
         font-size: 14px;
         color: #333;
     }
+
     .active-slide {
         opacity: 1; /* Fade in active slide */
     }
+
     .story-content {
         flex: 1;
         max-width: 100%;
         height: auto; /* Adjust height for mobile view */
-        padding: 20px 8px 8px; /* Adjusted padding */
+        padding: 10px;
         display: flex;
         flex-direction: column;
         align-items: flex-start; /* Ensure content starts at the top */
@@ -115,13 +133,16 @@
         color: #333; /* Text color */
         border-radius: 8px; /* Optional: adds rounded corners */
     }
+
     @media (min-width: 768px) {
         .story-content {
             max-width: 67%;
             height: 100%; /* Ensure the content takes up the full height on larger screens */
             overflow-y: auto; /* Enable vertical scrolling for the content on larger screens */
+            padding-top: 0; /* Remove padding for larger screens */
         }
     }
+
     .story-card {
         background-color: rgba(255, 255, 255, 0.2); /* White with 80% opacity */
         border-radius: 10px;
@@ -131,8 +152,10 @@
         width: 100%;
         box-sizing: border-box; /* Ensure padding doesn't cause overflow */
     }
+
     .story-content h2 {
         font-size: 2em;
+        margin-bottom: 20px;
         width: 100%; /* Ensure the heading covers the full width */
         color: #d9534f; /* Updated color */
         font-family: 'Cinzel', serif; /* Updated font-family */
@@ -141,6 +164,7 @@
         margin: 0; /* Remove default margin */
         padding: 20px 0; /* Add padding to the heading */
     }
+
     .story-item {
         margin-bottom: 20px;
         width: 100%; /* Ensure each story item covers the full width */
