@@ -6,5 +6,5 @@ class Config:
     SESSION_TYPE = os.getenv('SESSION_TYPE', 'filesystem')
     CREDENTIALS_FILE = 'credentials.json'
     SPREADSHEET_NAME = os.getenv('SPREADSHEET_NAME', 'Wedding RSVPs')
-    GUEST_LIST_SHEET_NAME = os.getenv('GUEST_LIST_SHEET_NAME', 'Guest List')
+    GUEST_LIST_SHEET_NAME = os.getenv('GUEST_LIST_SHEET_NAME', 'Guest List: Complete')
     RSVP_SHEET_NAME = os.getenv('RSVP_SHEET_NAME', 'RSVPs')
