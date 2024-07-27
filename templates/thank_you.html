@@ -1,6 +1,33 @@
 {% extends "base.html" %}
+
 {% block title %}Ananya & Mayank | Thank You{% endblock %}
 {% block content %}
+<script>
+    //start confetti 
+    
+    const start = () => {
+       setTimeout(function() {
+           confetti.start()
+       }, 1000); // 1 second
+   };
+
+   //stop confetti 
+
+   const stop = () => {
+       setTimeout(function() {
+           confetti.stop()
+       }, 15000); // 5 second
+   };
+
+   var attendance = '{{ attendance }}';  // Get the parameter from Flask
+
+    if (attendance === 'yes') {
+        start();
+        stop();
+    }
+
+</script>
+<script src="{{ url_for('static', filename='js/confetti.js') }}"></script>
 <style>
     .background-wrapper {
         background: url('../static/images/backgrounds/background-3.png') no-repeat center center fixed;
@@ -35,3 +62,5 @@
     </div>
 </div>
 {% endblock %}
+
+
