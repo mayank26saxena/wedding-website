@@ -1,6 +1,6 @@
 /* General Styles */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Zain:wght@200;300;400;700;800;900&display=swap');body {
-    font-family: 'Cinzel', serif;
+    font-family: 'Quicksand', serif;
     margin: 0;
     padding: 0;
     background-color: #fff5e1;  /* Yellowish tint */
@@ -12,8 +12,8 @@
 
 
 p {
- font-family:  "Quicksand", sans-serif;
- font-weight: 600;
+ font-family:  'Quicksand', sans-serif;
+ font-weight: 100;
  margin-bottom: 15px;
  font-size: 17px;
 }
@@ -24,14 +24,14 @@ p {
 }
 
 .header-content h1 {
-    font-family: 'Cinzel', serif;
+    font-family: 'Quicksand', serif;
     font-size: 36px;
     margin: 0;
     color: #d9534f;
 }
 
 .header-content p {
-    font-family: 'Cinzel', serif;
+    font-family: 'Quicksand', serif;
     margin: 5px 0 0;
     font-size: 18px;
     color: #5d4037;
@@ -196,7 +196,7 @@ main {
     text-align: center;
     color: #d9534f;
     margin-bottom: 20px;
-    font-family: 'Cinzel', serif;
+    font-family: 'Quicksand', serif;
 }
 
 .faq-item, .travel-item, .story-item, .schedule-item {
@@ -215,7 +215,7 @@ main {
     border-radius: 4px;
     outline: none;
     transition: background-color 0.3s ease;
-    font-family: 'Cinzel', serif;
+    font-family: 'Quicksand', serif;
 }
 
 .faq-question:hover, .travel-question:hover {
