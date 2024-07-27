@@ -75,7 +75,7 @@
         margin-bottom: 20px;
         width: 100%; /* Ensure the heading covers the full width */
         color: #d9534f; /* Updated color */
-        font-family: 'Cinzel', serif; /* Updated font-family */
+        font-family: 'Quicksand', serif; /* Updated font-family */
         text-align: left; /* Left align the heading */
         margin: 0; /* Remove default margin */
         padding: 20px 0; /* Add padding to the heading */
@@ -99,12 +99,17 @@
         padding: 10px;
         border: 1px solid #ddd;
         border-top: none;
-        background-color: rgba(255, 255, 255, 0.8); /* Background color for answer section */
+        background-color: rgba(255, 245, 255, 0.66); /* Background color for answer section */
         width: 100%; /* Ensure the answer box covers the full width */
         box-sizing: border-box; /* Include padding and border in the element's total width */
     }
     .faq-answer.active {
         display: block;
+    }
+    .faq-header h2 {
+        color: #d9534f;
+        font-family: 'Quicksand', serif;
+        font-weight: 300;
     }
 </style>
 
@@ -114,7 +119,9 @@
     </div>
     <div class="faq-content">
         <div class="faq-card">
-        <h2 class="page-heading">Frequently Asked Questions</h2>
+            <div class="faq-header">
+                <h2>FREQUENTLY ASKED QUESTIONS</h2>
+            </div>
         <div class="faq-item">
             <button class="faq-question">What is the date and location of the wedding?</button>
             <div class="faq-answer">
@@ -146,7 +153,7 @@
         <div class="faq-item">
             <button class="faq-question">How do I RSVP? And what is the deadline?</button>
             <div class="faq-answer">
-                <p>Tada - <a href="{{ url_for('rsvp') }}">here </a>you go. Please RSVP by August 15th so that we can have a accurate headcount. </p>
+                <p>Tada - <a href="{{ url_for('rsvp') }}">here</a> you go. Please RSVP by August 20th so that we can have a accurate headcount. </p>
             </div>
         </div>
         <div class="faq-item">
@@ -159,7 +166,7 @@
             <button class="faq-question">What should I do if I have any dietary restrictions?</button>
             <div class="faq-answer">
                 <p>Most events will have traditional Indian food.
-                    Please let us know your dietary restrictions on the <a href="{{ url_for('rsvp') }}">RSVP page</a> and we will try to accommodate to our best ability. </p>
+                    Please let us know your dietary restrictions on the <a href="{{ url_for('rsvp') }}">RSVP page</a> and we will try our best to accommodate. </p>
             </div>
         </div>
         <div class="faq-item">

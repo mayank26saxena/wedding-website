@@ -52,13 +52,13 @@ def rsvp():
         last_name = request.form['last_name'].strip()
         secret_code = request.form['secret_code'].strip()
 
-        if get_rsvp_status(first_name, last_name, secret_code):
+        if get_rsvp_status(secret_code):
             flash("You have already submitted your RSVP. Please contact Mayank or Ananya to update it.")
             return render_template('auth.html')
 
         # Verify against Google Sheet
         guest_list = guest_list_sheet.get_all_records()
-        guest = next((guest for guest in guest_list if guest['First Name'].strip().lower() == first_name.lower() and guest['Last Name'].strip().lower() == last_name.lower() and guest['Secret Code'] == secret_code), None)
+        guest = next((guest for guest in guest_list if guest['Secret Code'] == secret_code), None)
 
         if guest:
             session['authenticated'] = True
@@ -118,7 +118,7 @@ def rsvp_form():
         updated = False
 
         for i, record in enumerate(rsvp_records, start=2):  # Starting from row 2
-            if record['First Name'].strip().lower() == first_name.lower() and record['Last Name'].strip().lower() == last_name.lower():
+            if record['Secret Code'].strip().lower() == secret_code.lower():
                 # Update the existing record
                 rsvp_sheet.update_cell(i, list(record.keys()).index('Attendance') + 1, attendance)
                 rsvp_sheet.update_cell(i, list(record.keys()).index('People') + 1, people)
@@ -151,10 +151,10 @@ def thank_you():
     attendance = session['attendance']
     return render_template('thank_you.html',attendance=attendance)
 
-def get_rsvp_status(first_name, last_name, secret_code):
+def get_rsvp_status(secret_code):
     records = rsvp_sheet.get_all_records()
     for record in records:
-        if (record['First Name'] == first_name and record['Last Name'] == last_name and record['Secret Code'] == secret_code):
+        if (record['Secret Code'] == secret_code):
             return record['RSVP Update Allowed'] == 'No'
     return False
 

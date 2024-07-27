@@ -44,7 +44,7 @@
     }
 
     .auth-container h2 {
-        font-family: 'Cinzel', serif;
+        font-family: 'Quicksand', serif;
         font-size: 2em;
         color: #d9534f;
         margin-bottom: 20px;
@@ -57,11 +57,12 @@
     }
 
     .form-group label {
-        font-family: 'Cinzel', serif;
+        font-family: 'Quicksand', serif;
         font-size: 1.2em;
         color: #d9534f;
         display: block; /* Ensure label is on a new line */
         margin-bottom: 10px;
+        font-weight: 100;
     }
 
     .form-control {
@@ -70,7 +71,7 @@
         border: 1px solid #ccc;
         border-radius: 5px;
         box-sizing: border-box; /* Ensure padding doesn't affect total width */
-        font-family: 'Cinzel', serif;
+        font-family: 'Quicksand', serif;
     }
 
     .btn {
@@ -81,7 +82,7 @@
         border-radius: 5px;
         font-size: 1em;
         cursor: pointer;
-        font-family: 'Cinzel', serif;
+        font-family: 'Quicksand', serif;
         width: 100%;
         text-align: center;
     }
@@ -94,16 +95,24 @@
         list-style-type: none;
         padding: 0;
         color: #d9534f;
-        font-family: 'Cinzel', serif;
+        font-family: 'Quicksand', serif;
         font-size: 1em;
         text-align: center;
         margin-top: 20px;
+    }
+    .auth-header h2 {
+        color: #d9534f;
+        font-family: 'Quicksand', serif;
+        font-weight: 300;
     }
 </style>
 
 <div class="background-wrapper">
     <div class="auth-container">
-        <h2>RSVP Authentication</h2>
+        <div class="auth-header">
+            <h2>RSVP AUTHENTICATION</h2>
+            <br>
+        </div>
         <form method="POST" action="{{ url_for('rsvp') }}" class="form">
             <div class="form-group">
                 <label for="first_name">First Name</label>
