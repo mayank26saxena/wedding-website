@@ -1,5 +1,5 @@
 /* General Styles */
-body {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Zain:wght@200;300;400;700;800;900&display=swap');body {
     font-family: 'Cinzel', serif;
     margin: 0;
     padding: 0;
@@ -11,6 +11,12 @@ body {
 }
 
 
+p {
+ font-family:  "Quicksand", sans-serif;
+ font-weight: 600;
+ margin-bottom: 15px;
+ font-size: 17px;
+}
 /* Header content styling */
 .header-content {
     text-align: center;
@@ -36,7 +42,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: #ffe4b5;
+    background-color: #ffefd4;
     width: 100%;
 }
 
@@ -103,7 +109,7 @@ nav {
 
 /* Footer styling */
 footer {
-    background-color: #ffecd2;
+    background-color: #ffefd4;
     padding: 10px 0;
     text-align: center;
     border-top: 1px solid #ddd;
