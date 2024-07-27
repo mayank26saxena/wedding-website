@@ -80,6 +80,7 @@ def rsvp_form():
 
     if request.method == 'POST':
         attendance = request.form['attendance']
+        session['attendance'] = attendance
         first_name = session['first_name']
         last_name = session['last_name']
         secret_code = session['secret_code']
@@ -147,7 +148,8 @@ def rsvp_form():
 
 @app.route('/thank-you')
 def thank_you():
-    return render_template('thank_you.html')
+    attendance = session['attendance']
+    return render_template('thank_you.html',attendance=attendance)
 
 def get_rsvp_status(first_name, last_name, secret_code):
     records = rsvp_sheet.get_all_records()
