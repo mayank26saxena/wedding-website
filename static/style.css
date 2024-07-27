@@ -295,7 +295,7 @@ label[for="attending"] input {
     .nav-links a {
         margin: 10px 0;
         text-align: center;
-        border-bottom: solid #33333306;
+        border-bottom: 1px solid #33333306;
     }
 
     .nav-links a:last-child {
