@@ -285,7 +285,7 @@ label[for="attending"] input {
         position: absolute;
         top: 60px;
         left: 0;
-        background-color: #ffe4b5;
+        background-color: #ffefd4;
     }
 
     .nav-links.open {
@@ -295,6 +295,7 @@ label[for="attending"] input {
     .nav-links a {
         margin: 10px 0;
         text-align: center;
+        border-bottom: solid #3333330d;
     }
 
     .hamburger {
