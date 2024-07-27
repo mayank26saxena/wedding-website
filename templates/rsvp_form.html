@@ -98,7 +98,7 @@
             <div id="additional-questions" style="display: none;">
                 <div class="form-group">
                     <label for="people">How many people will you be attending with?</label>
-                    <select id="people" name="people" required class="form-control" >
+                    <select id="people" name="people" data-required class="form-control" >
                         <option value="" disabled selected>Select an option</option>
                         <option value="Just me">Just me</option>
                         <option value="With 1 more person">With 1 more person</option>
@@ -110,11 +110,11 @@
                 </div>
                 <div class="form-group">
                     <label for="arrival_day">Which day will you be arriving?</label>
-                    <input type="date" id="arrival_day" name="arrival_day" required class="form-control" min="2024-11-21" max="2024-11-22">
+                    <input type="date" id="arrival_day" name="arrival_day" data-required class="form-control" min="2024-11-21" max="2024-11-22">
                 </div>
                 <div class="form-group">
                     <label for="direct_arrival">Will you be arriving directly at the venue?</label>
-                    <select id="direct_arrival" name="direct_arrival" required class="form-control">
+                    <select id="direct_arrival" name="direct_arrival" data-required class="form-control">
                         <option value="" disabled selected>Select an option</option>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
@@ -122,7 +122,7 @@
                 </div>
                 <div class="form-group" id="transportation_group" style="display: none;">
                     <label for="need_transportation">Will you need transportation from the airport / railway station?</label>
-                    <select id="need_transportation" name="need_transportation" required class="form-control">
+                    <select id="need_transportation" name="need_transportation" class="form-control">
                         <option value="" disabled selected>Select an option</option>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
@@ -130,7 +130,7 @@
                 </div>
                 <div class="form-group" id="transportation_from_group" style="display: none;">
                     <label for="transportation_from">Where will you need transportation from?</label>
-                    <select id="transportation_from" name="transportation_from" required class="form-control">
+                    <select id="transportation_from" name="transportation_from" class="form-control">
                         <option value="" disabled selected>Select an option</option>
                         <option value="airport">Airport</option>
                         <option value="railway_station">Railway Station</option>
@@ -138,11 +138,11 @@
                 </div>
                 <div class="form-group" id="pickup_time_group" style="display: none;">
                     <label for="pickup_time">What time will you need to be picked up?</label>
-                    <input type="text" id="pickup_time" name="pickup_time" required class="form-control">
+                    <input type="text" id="pickup_time" name="pickup_time" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="contact_info">What would be the best way to contact you? Please enter the country code as well.</label>
-                    <input type="text" id="contact_info" name="contact_info" required class="form-control">
+                    <input type="text" id="contact_info" name="contact_info" data-required class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="dietary_restrictions">Do you have any dietary restrictions?</label>
@@ -168,10 +168,17 @@
 <script>
     document.getElementById('attendance').addEventListener('change', function () {
         var additionalQuestions = document.getElementById('additional-questions');
+        var requiredFields = additionalQuestions.querySelectorAll('[data-required]');
         if (this.value === 'yes') {
             additionalQuestions.style.display = 'block';
+            requiredFields.forEach(function (field) {
+                field.setAttribute('required', 'required');
+            });
         } else {
             additionalQuestions.style.display = 'none';
+            requiredFields.forEach(function (field) {
+                field.removeAttribute('required');
+            });
         }
     });
 
