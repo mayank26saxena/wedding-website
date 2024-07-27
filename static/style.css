@@ -70,7 +70,7 @@ nav {
     text-decoration: none;
     color: #d9534f;
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 100;
 }
 
 /* Navigation links container */
@@ -84,7 +84,7 @@ nav {
     margin: 0 15px;
     text-decoration: none;
     color: #d9534f;
-    font-weight: bold;
+    font-weight: 100;
     font-size: 16px;
 }
 
@@ -143,7 +143,7 @@ main {
 .form-group label {
     display: block;
     margin-bottom: 5px;
-    font-weight: bold;
+    font-weight: 100;
     color: #555;
 }
 
@@ -226,7 +226,7 @@ main {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    background-color: #fff;
+    background-color: rgba(255, 245, 225, 0.1);
     border-left: 2px solid #d9534f;
     padding-left: 10px;
     margin-top: 5px;

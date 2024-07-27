@@ -99,12 +99,17 @@
         padding: 10px;
         border: 1px solid #ddd;
         border-top: none;
-        background-color: rgba(255, 255, 255, 0.8); /* Background color for answer section */
+        background-color: rgba(255, 245, 255, 0.66); /* Background color for answer section */
         width: 100%; /* Ensure the answer box covers the full width */
         box-sizing: border-box; /* Include padding and border in the element's total width */
     }
     .faq-answer.active {
         display: block;
+    }
+    .faq-header h2 {
+        color: #d9534f;
+        font-family: 'Quicksand', serif;
+        font-weight: 300;
     }
 </style>
 
@@ -114,7 +119,9 @@
     </div>
     <div class="faq-content">
         <div class="faq-card">
-        <h2 class="page-heading">Frequently Asked Questions</h2>
+            <div class="faq-header">
+                <h2>FREQUENTLY ASKED QUESTIONS</h2>
+            </div>
         <div class="faq-item">
             <button class="faq-question">What is the date and location of the wedding?</button>
             <div class="faq-answer">
