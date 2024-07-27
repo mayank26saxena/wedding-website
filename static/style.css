@@ -295,8 +295,12 @@ label[for="attending"] input {
     .nav-links a {
         margin: 10px 0;
         text-align: center;
-        border-bottom: solid #3333330d;
+        border-bottom: solid #33333306;
     }
+
+    .nav-links a:last-child {
+        border-bottom: none;
+      }
 
     .hamburger {
         display: flex;
