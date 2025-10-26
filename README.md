@@ -88,10 +88,4 @@ Follow these instructions to set up a development environment and run the projec
 
 ### Environment Variables
 
-Create a `config.py` file to store your environment variables:
-
-```python
-class Config:
-    SECRET_KEY = 'your_secret_key'
-    SESSION_TYPE = 'filesystem'
-```
+Secrets such as API keys or service-account JSON files should be supplied through environment variables or GitHub Actions secrets at runtime—do not commit them to the repository.
