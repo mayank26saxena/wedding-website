@@ -182,8 +182,8 @@ main {
     margin-top: 10px;
 }
 
-/* FAQ, Travel, Story, RSVP, and Schedule Containers */
-.faq-container, .travel-container, .story-container, .rsvp-container, .schedule-container {
+/* FAQ, Travel, Story, and Schedule Containers */
+.faq-container, .travel-container, .story-container, .schedule-container {
     max-width: 800px;
     margin: auto;
     padding: 20px;
@@ -192,7 +192,7 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.faq-container h2, .travel-container h2, .story-container h2, .rsvp-container h2, .schedule-container h2 {
+.faq-container h2, .travel-container h2, .story-container h2, .schedule-container h2 {
     text-align: center;
     color: #d9534f;
     margin-bottom: 20px;
